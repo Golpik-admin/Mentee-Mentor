@@ -63,3 +63,96 @@ body {
 .buttonFifth {
     @apply text-colorPrimary hover:text-colorSecondary text-xs sm:text-sm font-semibold tracking-widest uppercase border-2 border-colorPrimary hover:border-transparent bg-transparent hover:bg-gradient-to-r from-colorPrimary via-colorPrimary to-colorPrimary rounded-lg px-5 sm:px-10 py-1 sm:py-2 transition-all ease-in-out duration-500;
 }
+
+
+@keyframes continuousJumpRotate {
+    0% {
+      transform: rotate(25deg);
+    }
+    20% {
+      transform: rotate(50deg); /* Rotate right */
+    }
+    40% {
+      transform: rotate(50deg); /* Less right */
+    }
+    60% {
+      transform: rotate(-50deg); /* Less left */
+    }
+    80% {
+      transform: rotate(-70deg); /* Rotate left */
+    }
+    100% {
+      transform: rotate(25deg); /* Back to original */
+    }
+  }
+  
+  .continuous-jump-rotate {
+    animation: continuousJumpRotate 3s ease-in-out infinite; /* Adjust duration for speed */
+  }
+  
+  
+  @keyframes continuousRotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(25deg); /* Rotate right */
+    }
+    50% {
+      transform: rotate(-25deg); /* Rotate left */
+    }
+    75% {
+      transform: rotate(25deg); /* Rotate right */
+    }
+    100% {
+      transform: rotate(0deg); /* Back to original */
+    }
+  }
+  
+  .continuous-rotate {
+    animation: continuousRotate 3s ease-in-out infinite; /* Adjust duration for speed */
+  }
+  
+
+
+  
+
+  @keyframes rotateLeft25 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-25deg); /* Rotate left 25 degrees */
+    }
+  }
+  
+  @keyframes rotateLeft50 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-75deg); /* Rotate left 50 degrees */
+    }
+  }
+  
+  @keyframes rotateOriginal {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg); /* Stay at original position */
+    }
+  }
+  
+  .rotate-left-25 {
+    animation: rotateLeft25 0.5s forwards; /* Rotate left 25 degrees */
+  }
+  
+  .rotate-left-25 {
+    animation: rotateLeft25 0.5s forwards; /* Rotate left 50 degrees */
+  }
+  
+  .rotate-original {
+    animation: rotateOriginal 0.5s forwards; /* Back to original */
+  }
+  

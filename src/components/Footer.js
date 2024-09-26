@@ -1,16 +1,14 @@
 import React from "react";
 import Logo from "../logo.svg";
 import {
-  EmailSvg,
   FacebookSvg,
   InstagramSvg,
   LinkedIn,
-  PhoneSvg,
 } from "../assets/svgs/HomeSvgs";
 
 const Footer = () => {
   return (
-    <div className="bg-[#151318] w-full h-[305px] px-6 py-3  ">
+    <div className="bg-[#151318] w-full h-[305px] px-10 py-3  ">
 
       <div className="flex flex-row items-center flex justifty-center pt-10">
         <div className="w-[50%] bg-red ">
@@ -85,12 +83,13 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="flex flex-col justify-end mt-10">
+      {/* <div className="flex flex-col justify-end mt-10">
         <div className="border-b border-[#322F37]  w-full my-4" />
         <p className="text-[#6D6775] text-sm text-center font-medium">
           2024 MyMenteeMentor inc. All Rights Reserved
         </p>
-      </div>
+      </div> */}
+      
     </div>
   );
 };

@@ -28,7 +28,7 @@ import {
     LOAD_USER_FAIL,
 
     CLEAR_ERRORS,
-} from '../constants/user-constant';
+} from '../constants/UserConstant';
 
 const initialState = {
     user: null

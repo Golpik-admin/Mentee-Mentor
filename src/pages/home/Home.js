@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import bannerbg from "../../assets/images/bannerbg.png";
 import {
   ChevLeft,
@@ -10,16 +10,40 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import "../../";
 
 const Home = () => {
   const [activeButton, setActiveButton] = useState(0);
   const swiperRef = useRef(null);
+  const [rotation, setRotation] = useState(0); // Track current rotation
+
+  const handleClick = () => {
+    if (rotation === 0) {
+      setRotation(-100); // First click: rotate left 25 degrees
+    } else if (rotation === -100) {
+      setRotation(-200); // Second click: rotate left another 25 degrees
+    } else {
+      setRotation(0); // Third click: reset to original position
+    }
+  };
+  // const getRotationClass = () => {
+  //   switch (clickCount) {
+  //     case 0:
+  //       return "rotate-original"; // Original position
+  //     case 1:
+  //       return "rotate-left-25"; // Rotate left 25 degrees
+  //     case 2:
+  //       return "rotate-left-25"; // Rotate left 50 degrees
+  //     default:
+  //       return "rotate-original"; // Fallback
+  //   }
+  // };
 
   return (
     <div>
       {/* banner  */}
       <div
-        className="w-full h-[550px] flex justify-center py-4 px-6 sm:h-[600px] lg:h-[678px] bg-cover bg-no-repeat bg-center"
+        className="w-full h-[550px] flex justify-center py-4 px-10 sm:h-[600px] lg:h-[678px] bg-cover bg-no-repeat bg-center"
         style={{ backgroundImage: `url(${bannerbg})` }}
       >
         <div className="flex flex-row  items-center ">
@@ -32,7 +56,8 @@ const Home = () => {
               ante {""} sollicitudin. Ut sed eleifend duis morbi. Turpis id in
               nam aliquam amet, {""} duis sedvolutpat sit ipsum facilisis.
               Mauris id fusce lectus justo
-            </p>{" "}
+            </p>
+
             <div className="flex flex-row pt-4 items-center space-x-4">
               <a className=" p-2 px-6 text-colorPrimary text-center  cursor-pointer bg-colorWhite  rounded-md">
                 Mentor
@@ -42,11 +67,16 @@ const Home = () => {
               </a>
             </div>
           </div>
-          <div className="w-1/2 p-4 flex justify-center items-center  ">
+          <div className="w-1/2 p-4 cursor-pointer flex justify-center items-center  ">
             <img
               src={require("../../assets/images/bannerStar.png")}
               alt="Description"
+              style={{
+                transform: `rotate(${rotation}deg)`,
+                transition: "transform 1s ease", // Smooth transition
+              }}
               className="w-2/3 md:w-3/4 lg:w-3/4 h-auto"
+              onClick={handleClick}
             />
           </div>
         </div>
@@ -54,22 +84,40 @@ const Home = () => {
 
       {/* Welcome to menteeMentor */}
 
-      <div className="pt-12 pb-20 bg-[#F5F5F5] px-6 ">
-        <div className="bg-colorWhite p-2 shadow-sm w-full h-[435px] items-center rounded-lg flex-col flex justify-center">
-          <div className="bg-colorWhite shadow-lg  p-4 w-[423px] h-[138px] items-center rounded">
-            <p className=" flex justify-center">
-              <Welcome />
-            </p>
-            <p className="text-colorSecondary text-center pt-2 text-base font-medium">
-              {" "}
-              Welcome to MentorMentee!
-            </p>
-            <p className="tex-colorTertiary pt-2 text-center  text-xs font-regular">
-              Real companionship based guidance. Let's connect and grow to
-              succeed together !
-            </p>
+      <div className="pt-12 pb-20 bg-[#F5F5F5] px-10 ">
+        <div className="bg-colorWhite p-4 shadow-sm w-full flex flex-col justify-between h-[635px] items-center rounded-lg">
+          <div className="relative mx-auto  ">
+            <div className="relative  bg-colorWhite z-20 shadow-lg p-4 w-[423px] h-[138px] items-center rounded">
+              <p className=" flex justify-center">
+                <Welcome />
+              </p>
+              <p className="text-colorSecondary text-center pt-2 text-base font-medium">
+                Welcome to MentorMentee!
+              </p>
+              <p className="tex-colorTertiary pt-2 text-center  text-xs font-regular">
+                Real companionship based guidance. Let's connect and grow to
+                succeed together !
+              </p>
+            </div>
+
+            <div className="absolute top-1/3 z-10 ">
+              <img
+                alt="Star"
+                className="w-[450px] h-[460px] continuous-jump-rotate"
+                src={require("../../assets/images/bannerStar.png")}
+              />
+            </div>
+
+            <div className="absolute bottom-[-370px] z-0 ">
+              <img
+                alt="StarShadow"
+                className="w-[432px] h-[221px]"
+                src={require("../../assets/images/starShadow.png")}
+              />
+            </div>
           </div>
-          <div className=" flex flex-row flex justify-between pt-4 items-center space-x-4">
+
+          <div className=" flex flex-row  justify-between w-full pt-4 items-center space-x-4">
             <a className="font-bold text-xs  py-2.5 px-7 text-colorWhite text-center  cursor-pointer bg-colorPrimary  rounded-md">
               Mentor
             </a>
@@ -146,7 +194,7 @@ const Home = () => {
       </div>
 
       {/* Meet our mentor */}
-      <div className="py-16 bg-colorPrimary px-6 ">
+      <div className="py-16 bg-colorPrimary px-10 ">
         <h1 className="text-colorWhite text-4xl text-center font-bold">
           Meet Our Mentor{" "}
         </h1>
@@ -162,11 +210,12 @@ const Home = () => {
           // className="w-2/3 md:w-3/4 lg:w-3/4 h-auto"
         />
       </div>
+
       {/* Mentee say about us*/}
 
       <div className="py-16 bg-[#F5F5F5]">
         <div className="flex flex-row w-[100%]">
-          <div className="w-[40%] pl-6">
+          <div className="w-[40%] pl-10">
             <h1 className="text-colorBlack text-5xl  font-bold">
               What our Mentees
               <br />

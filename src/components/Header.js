@@ -37,7 +37,7 @@ const Header = () => {
   return (
     <div className="bg-colorPrimary py-3">
       {/* header */}
-      <div className="w-11/12 max-w-[1100px] flex items-center justify-between m-auto">
+      <div className=" px-14 flex items-center justify-between m-auto">
         <img
           src={Logo}
           alt="Mentee Mentor"
@@ -45,7 +45,7 @@ const Header = () => {
         />
         {/* logo */}
         <div className="flex items-center">
-          <li className="list-none text-colorWhite pr-10 cursor-pointer">
+          <li onClick={() => navigate('home')} className="list-none text-colorWhite pr-10 cursor-pointer">
             Home
           </li>
           <li className="list-none text-colorWhite pr-10 cursor-pointer">
@@ -66,9 +66,9 @@ const Header = () => {
         </div>
 
         <div className="flex flex-row items-center space-x-4">
-          <li className="list-none text-colorWhite cursor-pointer">Log in</li>
-          <li className="list-none p-2 text-colorPrimary text-center  cursor-pointer bg-colorWhite  rounded-full">
-            Sign Up
+          <li onClick={() => navigate('login')} className="list-none text-colorWhite cursor-pointer">Log in</li>
+          <li onClick={() => navigate('signup')} className="list-none p-2 text-colorPrimary text-center  cursor-pointer bg-colorWhite  rounded-full">
+            Sign Up 
           </li>
         </div>
       </div>
