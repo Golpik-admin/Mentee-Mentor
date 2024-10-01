@@ -4,6 +4,8 @@ import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../logo.svg";
 import {
+  CloseSvg,
+  LogoutSvg,
   MessageSvg,
   NotificationSvg,
   SearchSvg,
@@ -11,6 +13,8 @@ import {
 } from "../assets/svgs/MentorSvg";
 
 const UserHeader = () => {
+  const [openModals, setOpenModals] = useState({});
+
   const navigate = useNavigate();
 
   const menu = [
@@ -39,6 +43,16 @@ const UserHeader = () => {
       link: "/",
     },
   ];
+
+  // if (!isOpen) return null;
+
+  const openPopup = (modal) => {
+    setOpenModals((prev) => ({ ...prev, [modal]: true }));
+  };
+
+  const closePopup = (modal) => {
+    setOpenModals((prev) => ({ ...prev, [modal]: false }));
+  };
 
   return (
     <div className="bg-colorPrimary py-3">
@@ -71,13 +85,44 @@ const UserHeader = () => {
             <MessageSvg />
           </a>
           <a
-            onClick={() => navigate("signup")}
+            onClick={() => openPopup("settings")}
             className="list-none text-colorWhite cursor-pointer"
           >
             <SettingSvg />
           </a>
         </div>
       </div>
+
+      {openModals.settings && (
+        <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+          <div className="bg-colorWhite py-4 rounded-lg shadow-lg w-[30%]">
+            <div className="px-4 flex flex-row items-center justify-between">
+              <h1 className="text-lg font-semibold text-colorSecondary">
+                Upload Assignment
+              </h1>
+              <div
+                className="cursor-pointer"
+                onClick={() => closePopup("settings")}
+              >
+                <CloseSvg />
+              </div>
+            </div>
+            <div className="border w-full mt-2" />
+            <div className="px-4"></div>
+
+            {/* Submit button */}
+            <div className="flex  justify-end mt-4 px-4 gap-4 items-center flex-row">
+              <button
+                // onClick={handleFileUpload}
+                className="flex gap-2 items-center flex-row text-colorSecondary text-sm font-semibold py-2 px-6 rounded"
+              >
+                <LogoutSvg/>
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -45,7 +45,7 @@ const Header = () => {
         />
         {/* logo */}
         <div className="flex items-center">
-          <li onClick={() => navigate('home')} className="list-none text-colorWhite pr-10 cursor-pointer">
+          <li onClick={() => navigate('mentorprofile')} className="list-none text-colorWhite pr-10 cursor-pointer">
             Home
           </li>
           <li className="list-none text-colorWhite pr-10 cursor-pointer">

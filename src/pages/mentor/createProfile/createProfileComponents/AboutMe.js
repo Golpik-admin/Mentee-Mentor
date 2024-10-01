@@ -62,7 +62,7 @@ const AboutMe = () => {
           <textarea
             // type="aboutMe"
             name="aboutMe"
-            placeholder="Tell us a litter bit about yourself"
+            placeholder="Tell us a litte bit about yourself"
             value={value.aboutMe}
             // onChange={handleChange}
             // onBlur={handleBlur}

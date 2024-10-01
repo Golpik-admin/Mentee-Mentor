@@ -8,7 +8,7 @@ import {
   InfoSvgTwo,
   StreamSvgOne,
   StreamSvgTwo,
-} from "../../../assets/svgs/MentorProgram";
+} from "../../../assets/svgs/MentorProgramSvg";
 import { useNavigate } from "react-router-dom";
 import ProgramInfo from "./mentorProgramComponents/ProgramInfo";
 import Chat from "./mentorProgramComponents/Chat";
@@ -66,7 +66,7 @@ const MentorProgram = () => {
                     : "text-colorLightTertiary"
                 }`}
               >
-                Program Stream
+                Discussion
               </p>
             </div>
             <div

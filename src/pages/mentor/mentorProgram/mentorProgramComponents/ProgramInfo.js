@@ -7,7 +7,7 @@ import {
   InfoSvgOne,
   SessionSvg,
   StreamSvgOne,
-} from "../../../../assets/svgs/MentorProgram";
+} from "../../../../assets/svgs/MentorProgramSvg";
 import { useNavigate } from "react-router-dom";
 
 const ProgramInfo = () => {

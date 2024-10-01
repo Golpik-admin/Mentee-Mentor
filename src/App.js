@@ -9,6 +9,9 @@ import CreateProfile from "./pages/mentor/createProfile/CreateProfile";
 import HomePage from "./pages/mentor/hoemPage/HomePage";
 import MentorProgram from "./pages/mentor/mentorProgram/MentorProgram";
 import CreateProgram from "./pages/mentor/createprogram/CreateProgram";
+import MentorProfile from "./pages/mentor/mentorProfile/MentorProfile";
+import EditProfileMentor from "./pages/mentor/editProfileMentor/EditProfileMentor";
+import AccountSetting from "./pages/mentor/accountSetting/AccountSetting";
 
 function App() {
   // const dispatch = useDispatch();
@@ -33,8 +36,10 @@ function App() {
     location.pathname === "/createprofile" ||
     location.pathname === "/homepage" ||
     location.pathname === "/createprogram" ||
-    location.pathname === "/mentorprogram";
-
+    location.pathname === "/mentorprogram" ||
+    location.pathname === "/mentorprofile" ||
+    location.pathname === "/editprofilementor" ||
+    location.pathname === "/accountsetting";
   return (
     <div className="App w-full h-full overflow-auto">
       {!hideHeaderFooter && <Header />}
@@ -46,6 +51,9 @@ function App() {
         <Route path="/homepage" element={<HomePage />} />
         <Route path="/createprogram" element={<CreateProgram />} />
         <Route path="/mentorprogram" element={<MentorProgram />} />
+        <Route path="/mentorprofile" element={<MentorProfile />} />
+        <Route path="/editprofilementor" element={<EditProfileMentor />} />
+        <Route path="/accountsetting" element={<AccountSetting />} />
 
         <Route path="/" element={<Navigate to="/home" />} />
       </Routes>
