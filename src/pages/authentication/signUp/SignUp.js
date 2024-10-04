@@ -4,7 +4,11 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { registerAction } from "../../../actions/UserActions";
 import { registerSchema } from "../../../schemas";
-import { EmailSvg, ProfileSvg } from "../../../assets/svgs/AuthSvg";
+import {
+  EmailSvg,
+  LockLightSvg,
+  ProfileSvg,
+} from "../../../assets/svgs/AuthSvg";
 import { Icon } from "@iconify/react";
 import Spinner from "../../../elements/Spinner";
 
@@ -36,16 +40,7 @@ const SignUp = () => {
       },
     });
 
-  const [showPasswords, setShowPasswords] = useState({
-    password: false,
-  });
-
-  const handleShowPassword = (password) => {
-    setShowPasswords({
-      ...showPasswords,
-      [password]: !showPasswords[password],
-    });
-  };
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="w-full">
@@ -130,9 +125,9 @@ const SignUp = () => {
                   Password
                 </label>
                 <div className="border  border-colorPrimary rounded-md px-4 py-3 my-2  w-full flex flex-row items-center">
-                  <ProfileSvg />
+                  <LockLightSvg />
                   <input
-                    type="text"
+                    type={showPassword ? "text" : "password"}
                     name="password"
                     placeholder="Enter your password"
                     value={values.password}
@@ -140,21 +135,19 @@ const SignUp = () => {
                     onBlur={handleBlur}
                     className="w-full text-sm font-regular text-colorLightTertiary px-4 focus:outline-none  "
                   />
-                  {values.password !== "" && (
-                    <div
-                      onClick={() => handleShowPassword("password")}
-                      className=" text-[#6B7280] cursor-pointer"
-                    >
-                      <Icon
-                        icon={
-                          showPasswords.password
-                            ? "clarity:eye-hide-line"
-                            : "clarity:eye-show-line"
-                        }
-                        className="w-full h-auto text-2xl"
-                      />
-                    </div>
-                  )}
+                  <div
+                    onClick={() => setShowPassword(!showPassword)}
+                    className=" text-[#6B7280] cursor-pointer"
+                  >
+                    <Icon
+                      icon={
+                        showPassword
+                          ? "clarity:eye-show-line"
+                          : "clarity:eye-hide-line"
+                      }
+                      className="w-full h-auto text-2xl"
+                    />
+                  </div>
                 </div>
                 {errors.password && touched.password && (
                   <p className="text-red-500 text-xs">{errors.password}</p>
@@ -169,7 +162,7 @@ const SignUp = () => {
                     name="terms"
                     checked={isChecked}
                     onChange={handleCheckboxChange}
-                    className="h-4 w-4 bg-colorPrimary-800 text-colorSecondary-600 rounded border-colorPrimary-300 focus:ring-colorSecondary"
+                    className="appearance-none h-4 w-4 checked:bg-colorPrimary checked:before:content-['✓'] checked:before:text-xs checked:before:flex checked:before:justify-center checked:before:text-white  rounded border border-colorPrimary  focus:ring-colorSecondary"
                   />
                   <label
                     htmlFor="terms"
@@ -202,7 +195,7 @@ const SignUp = () => {
                     {loading ? (
                       <Spinner rootClass="w-5 h-5 text-colorTertiary fill-colorPrimary" />
                     ) : (
-                      "Continue"
+                      "Signup"
                     )}
                   </button>
                 </div>
@@ -214,7 +207,7 @@ const SignUp = () => {
                     onClick={() => navigate("/login")}
                     className="text-colorPrimary hover:text-colorPrimaryLight font-semibold cursor-pointer"
                   >
-                    Sign in
+                    Signin
                   </div>
                 </div>
               </div>

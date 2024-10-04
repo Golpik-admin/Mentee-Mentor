@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import _ from "lodash";
-import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../logo.svg";
 import {
@@ -8,6 +7,7 @@ import {
   LogoutSvg,
   MessageSvg,
   NotificationSvg,
+  ProfileSvg,
   SearchSvg,
   SettingSvg,
 } from "../assets/svgs/MentorSvg";
@@ -44,7 +44,6 @@ const UserHeader = () => {
     },
   ];
 
-  // if (!isOpen) return null;
 
   const openPopup = (modal) => {
     setOpenModals((prev) => ({ ...prev, [modal]: true }));
@@ -94,12 +93,23 @@ const UserHeader = () => {
       </div>
 
       {openModals.settings && (
-        <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center">
-          <div className="bg-colorWhite py-4 rounded-lg shadow-lg w-[30%]">
-            <div className="px-4 flex flex-row items-center justify-between">
-              <h1 className="text-lg font-semibold text-colorSecondary">
-                Upload Assignment
-              </h1>
+        <div className="fixed inset-0 bg-black bg-opacity-20 flex  p-14 justify-end">
+          <div className="bg-colorWhite py-2 rounded-lg shadow-lg w-[20%] h-[170px]">
+            <div className="px-2 flex flex-row  justify-between">
+              <div className="flex gap-2 items-center">
+                <img
+                  className="w-[56px] h-[56px] rounded-full"
+                  src={require("../assets/images/profile.png")}
+                />
+                <div className="">
+                  <h1 className="text-lg font-semibold text-colorSecondary">
+                    Jack Willson
+                  </h1>
+                  <p className="text-sm font-regular text-colorSecondary">
+                    Certified Fitness Coach
+                  </p>
+                </div>
+              </div>
               <div
                 className="cursor-pointer"
                 onClick={() => closePopup("settings")}
@@ -107,16 +117,22 @@ const UserHeader = () => {
                 <CloseSvg />
               </div>
             </div>
-            <div className="border w-full mt-2" />
-            <div className="px-4"></div>
 
-            {/* Submit button */}
-            <div className="flex  justify-end mt-4 px-4 gap-4 items-center flex-row">
+            <div className="border w-full mt-2" />
+
+            <div className="flex mt-2 px-2  flex-col">
+              <button
+                onClick={() => navigate('/accountsetting')}
+                className="flex gap-2 items-center flex-row text-colorSecondary text-sm font-semibold py-2 rounded"
+              >
+                <ProfileSvg />
+                Account Setting
+              </button>
               <button
                 // onClick={handleFileUpload}
-                className="flex gap-2 items-center flex-row text-colorSecondary text-sm font-semibold py-2 px-6 rounded"
+                className="flex gap-2 items-center flex-row text-colorSecondary text-sm font-semibold py-2 rounded"
               >
-                <LogoutSvg/>
+                <LogoutSvg />
                 Logout
               </button>
             </div>

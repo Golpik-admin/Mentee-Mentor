@@ -1,46 +1,78 @@
-import React from "react";
-import UserHeader from "../../../../components/UserHeader";
+import React, { useState } from "react";
 import {
   ArchiveSvg,
-  AssignmentSvgOne,
-  BackSvg,
-  InfoSvgOne,
   SessionSvg,
-  StreamSvgOne,
+  StartSvg,
 } from "../../../../assets/svgs/MentorProgramSvg";
 import { useNavigate } from "react-router-dom";
+import GiveRecommendation from "../../../../components/GiveRecommendation";
+import ScheduleSession from "../../../../components/ScheduleSession";
 
 const ProgramInfo = () => {
   const navigate = useNavigate();
+  const [openModals, setOpenModals] = useState(false);
+  const [openScheduleSession, setOpenScheduleSession] = useState(false);
+
+  const [isProgramStarted, setIsProgramStarted] = useState(false);
+  const [isSessionVisible, setIsSessionVisible] = useState(false);
+  const [modalType, setModalType] = useState("");
+
+  const handleStartProgram = () => {
+    if (!isProgramStarted) {
+      setIsProgramStarted(true);
+      setIsSessionVisible(true);
+    } else {
+      setModalType("archive");
+      openPopup();
+    }
+  };
+
+  const openPopup = () => {
+    setOpenModals(true);
+  };
+
+  const closePopup = () => {
+    setOpenModals(false);
+  };
+
+  const openSchedulaPopup = () => {
+    setOpenScheduleSession(true);
+  };
+
+  const closeSchedulePopup = () => {
+    setOpenScheduleSession(false);
+  };
+
   return (
     <div className="w-full h-full overflow-auto bg-colorWhite">
-
       <div className="flex flex-row mt-10 justify-between items-center">
         <p className="text-colorSecondary font-semibold text-sm">
           Current Program
         </p>
 
         <div className="flex flex-row gap-4 items-center">
-          <div
-            onClick={() => navigate("/")}
+          <button
+            onClick={handleStartProgram}
             className="rounded-md border border-colorPrimary cursor-pointer flex justify-center gap-2 w-[182px] h-[42px] flex flex-row items-center"
           >
-            <ArchiveSvg />
+            {isProgramStarted ? <ArchiveSvg /> : <StartSvg />}
             <p className="text-colorPrimary font-semibold text-sm">
-              Archive Program
+              {isProgramStarted ? "Archive Program" : "Start Program"}
             </p>
-          </div>
-          <div
-            onClick={() => navigate("/")}
-            className="rounded-md border border-colorPrimary bg-colorPrimary cursor-pointer flex justify-center gap-2 w-[131px] h-[42px] flex flex-row items-center"
-          >
-            <SessionSvg />
-            <p className="text-colorWhite font-semibold text-sm">Sessions</p>
-          </div>
+          </button>
+          {isSessionVisible && (
+            <button
+              onClick={openSchedulaPopup}
+              className="rounded-md border border-colorPrimary bg-colorPrimary cursor-pointer flex justify-center gap-2 w-[131px] h-[42px] flex flex-row items-center"
+            >
+              <SessionSvg />
+              <p className="text-colorWhite font-semibold text-sm">Sessions</p>
+            </button>
+          )}
         </div>
       </div>
 
-      <div className="shadow-xs shadow-[#ccc] z-1 overflow rounded-lg bg-colorWhite p-4 mt-8  w-full border border-[#ccc] ">
+      <div className="shadow-xs shadow-[#F7F7F7] z-1 overflow rounded-lg bg-colorWhite p-4 mt-8  w-full border ">
         <div className="flex flex-row items-center justify-between">
           <p className="text-colorSecondary font-semibold text-lg">
             Fitness Coaching
@@ -65,6 +97,16 @@ const ProgramInfo = () => {
           McClintock, a Latin professor at Hampden.
         </p>
       </div>
+      <GiveRecommendation
+        modalType={modalType}
+        closePopup={closePopup}
+        isOpen={openModals}
+      />
+
+      <ScheduleSession
+        isOpen={openScheduleSession}
+        closePopup={closeSchedulePopup}
+      />
     </div>
   );
 };

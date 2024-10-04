@@ -3,6 +3,7 @@ import UserHeader from "../../../components/UserHeader";
 import { StarSvg } from "../../../assets/svgs/HomeSvgs";
 import { PlusSvg } from "../../../assets/svgs/MentorSvg";
 import { useNavigate } from "react-router-dom";
+import CreateProgram from "../../../components/CreateProgram";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -15,9 +16,13 @@ const HomePage = () => {
   return (
     <div className="w-full h-full flex flex-col min-h-screen overflow-auto bg-colorWhite">
       <UserHeader />
-      <div className="flex gap-6 flex-row px-6 pt-10">
+      <div className="flex gap-6 flex-row px-6 pt-10 pb-6 ">
         {/* Image  */}
-        <div className=" bg-[#F7F7F7] w-[20%] h-[667px] px-4 py-4 rounded ">
+
+        <div
+          onClick={() => navigate("/mentorprofile")}
+          className="cursor-pointer bg-[#F7F7F7] w-[20%] h-[667px] px-4 py-4 rounded "
+        >
           <div className="flex justify-center flex-col items-center">
             <img
               className="w-[60px] h-[60px]"
@@ -56,6 +61,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+
         {/* right content */}
 
         <div className="w-[80%] flex flex-col">
@@ -67,7 +73,7 @@ const HomePage = () => {
             </div>
 
             <div
-              onClick={() => navigate("/createprogram")}
+              onClick={openModal}
               className="rounded-md bg-colorPrimary cursor-pointer flex justify-center px-4 py-2 flex flex-row items-center"
             >
               <PlusSvg />
@@ -76,7 +82,8 @@ const HomePage = () => {
               </p>
             </div>
           </div>
-          <div className="shadow-sm shadow-[#ccc] z-1  overflow rounded-md bg-colorWhite p-4 mt-4  w-full ">
+
+          <div className="shadow-sm shadow-[#F7F7F7] border overflow rounded-lg bg-colorWhite p-4 mt-4  w-full ">
             <div className="">
               <p className="text-colorSecondary font-semibold text-lg">
                 Fitness Coaching
@@ -125,7 +132,7 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="shadow-sm shadow-[#ccc] z-1  overflow rounded-md bg-colorWhite p-4 mt-4  w-full ">
+          <div className="shadow-sm shadow-[#F7F7F7] border overflow rounded-lg bg-colorWhite p-4 mt-4  w-full ">
             <div className="flex flex-row gap-4 items-center">
               <p className="text-colorSecondary font-semibold text-lg">
                 Fitness Coaching
@@ -203,12 +210,15 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
       {/* <div className="flex-shrink-0 mt-auto pb-4">
         <div className="border border-[#EDEDED]  w-full my-4" />
         <p className="text-[#C3C1C1] text-sm text-center font-medium">
           2024 MyMenteeMentor inc. All Rights Reserved
         </p>
       </div> */}
+
+      <CreateProgram isOpen={isModalOpen} closePopup={closeModal} />
     </div>
   );
 };

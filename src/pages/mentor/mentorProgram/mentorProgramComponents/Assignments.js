@@ -59,7 +59,7 @@ const Assignments = () => {
   return (
     <div className="w-full h-full overflow-auto bg-colorWhite">
       {Data.map((item, i) => (
-        <div className="border rounded-lg mb-4 shadow shadow-[#ccc] border-[#ccc] w-full h-full p-4">
+        <div className="border rounded-lg mb-4 shadow shadow-[#F7F7F7]  w-full h-full p-4">
           <div className="flex flex-row py-2 items-center justify-between">
             <p className="text-colorSecondary text-md font-bold">
               {item.heading}
@@ -108,8 +108,6 @@ const Assignments = () => {
               closePopup={() => closePopup("links")}
             />
           )}
-
-
         </div>
       ))}
     </div>

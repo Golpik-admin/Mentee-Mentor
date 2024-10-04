@@ -8,10 +8,12 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import CreateProfile from "./pages/mentor/createProfile/CreateProfile";
 import HomePage from "./pages/mentor/hoemPage/HomePage";
 import MentorProgram from "./pages/mentor/mentorProgram/MentorProgram";
-import CreateProgram from "./pages/mentor/createprogram/CreateProgram";
 import MentorProfile from "./pages/mentor/mentorProfile/MentorProfile";
 import EditProfileMentor from "./pages/mentor/editProfileMentor/EditProfileMentor";
 import AccountSetting from "./pages/mentor/accountSetting/AccountSetting";
+import ForgotPassword from "./pages/authentication/forgotPassword/ForgotPassword";
+import ResetPassword from "./pages/authentication/resetPassword/ResetPassword";
+import Sessions from "./pages/mentor/sessions/Sessions";
 
 function App() {
   // const dispatch = useDispatch();
@@ -30,16 +32,20 @@ function App() {
   //   dispatch(clearErrors());
   // }, [location.pathname]);
 
+
   const hideHeaderFooter =
     location.pathname === "/login" ||
     location.pathname === "/signup" ||
     location.pathname === "/createprofile" ||
     location.pathname === "/homepage" ||
-    location.pathname === "/createprogram" ||
     location.pathname === "/mentorprogram" ||
     location.pathname === "/mentorprofile" ||
     location.pathname === "/editprofilementor" ||
+    location.pathname === "/forgotpassword" ||
+    location.pathname === "/resetpassword" ||
+    location.pathname === "/sessions" ||
     location.pathname === "/accountsetting";
+
   return (
     <div className="App w-full h-full overflow-auto">
       {!hideHeaderFooter && <Header />}
@@ -48,12 +54,14 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/createprofile" element={<CreateProfile />} />
-        <Route path="/homepage" element={<HomePage />} />
-        <Route path="/createprogram" element={<CreateProgram />} />
-        <Route path="/mentorprogram" element={<MentorProgram />} />
-        <Route path="/mentorprofile" element={<MentorProfile />} />
+        <Route path="/homepage" element={<HomePage />}  />
+        <Route path="/mentorprogram" element={<MentorProgram />}  />
+        <Route path="/mentorprofile" element={<MentorProfile />}  />
         <Route path="/editprofilementor" element={<EditProfileMentor />} />
         <Route path="/accountsetting" element={<AccountSetting />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />}  />
+        <Route path="/resetpassword" element={<ResetPassword />} />
+        <Route path="/sessions" element={<Sessions />} />
 
         <Route path="/" element={<Navigate to="/home" />} />
       </Routes>

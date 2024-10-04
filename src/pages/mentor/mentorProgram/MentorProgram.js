@@ -4,6 +4,8 @@ import {
   AssignmentSvgOne,
   AssignmentSvgTwo,
   BackSvg,
+  FeedbackSvgOne,
+  FeedbackSvgTwo,
   InfoSvgOne,
   InfoSvgTwo,
   StreamSvgOne,
@@ -13,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import ProgramInfo from "./mentorProgramComponents/ProgramInfo";
 import Chat from "./mentorProgramComponents/Chat";
 import Assignments from "./mentorProgramComponents/Assignments";
+import Feedback from "./mentorProgramComponents/Feedback";
 
 const MentorProgram = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -86,6 +89,23 @@ const MentorProgram = () => {
                 Assignment
               </p>
             </div>
+            <div
+              onClick={() => handleTabClick(4)}
+              className={`flex flex-row gap-2 pb-2 items-center cursor-pointer ${
+                activeTab === 4 ? "border-b-2 border-colorPrimary" : ""
+              }`}
+            >
+              {activeTab === 4 ? <FeedbackSvgTwo /> : <FeedbackSvgOne />}
+              <p
+                className={`text-md font-medium ${
+                  activeTab === 4
+                    ? "text-colorPrimary"
+                    : "text-colorLightTertiary"
+                }`}
+              >
+                Feedback
+              </p>
+            </div>
           </div>
 
           <div className="w-full  border-b border-colorLightTertiary" />
@@ -95,6 +115,7 @@ const MentorProgram = () => {
           {activeTab === 1 && <ProgramInfo />}
           {activeTab === 2 && <Chat />}
           {activeTab === 3 && <Assignments />}
+          {activeTab === 4 && <Feedback/>}
         </div>
       </div>
     </div>
