@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import _ from "lodash";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Logo from "../logo.svg";
 import {
   CloseSvg,
@@ -16,6 +16,8 @@ const UserHeader = () => {
   const [openModals, setOpenModals] = useState({});
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const { userType } = location.state || { userType: "mentee" };
 
   const menu = [
     {
@@ -44,7 +46,6 @@ const UserHeader = () => {
     },
   ];
 
-
   const openPopup = (modal) => {
     setOpenModals((prev) => ({ ...prev, [modal]: true }));
   };
@@ -54,7 +55,7 @@ const UserHeader = () => {
   };
 
   return (
-    <div className="bg-colorPrimary py-3">
+    <div className="bg-colorPrimary py-2.5">
       {/* header */}
       <div className=" px-14 flex items-center justify-between m-auto">
         <img
@@ -93,8 +94,8 @@ const UserHeader = () => {
       </div>
 
       {openModals.settings && (
-        <div className="fixed inset-0 bg-black bg-opacity-20 flex  p-14 justify-end">
-          <div className="bg-colorWhite py-2 rounded-lg shadow-lg w-[20%] h-[170px]">
+        <div className="fixed  inset-0 bg-black bg-opacity-20 flex  p-16 justify-end">
+          <div className="bg-colorWhite  rounded-lg py-2 shadow-lg w-[20%] h-[175px]">
             <div className="px-2 flex flex-row  justify-between">
               <div className="flex gap-2 items-center">
                 <img
@@ -122,7 +123,9 @@ const UserHeader = () => {
 
             <div className="flex mt-2 px-2  flex-col">
               <button
-                onClick={() => navigate('/accountsetting')}
+                onClick={() =>
+                  navigate("/accountsetting", { state: { userType } })
+                }
                 className="flex gap-2 items-center flex-row text-colorSecondary text-sm font-semibold py-2 rounded"
               >
                 <ProfileSvg />

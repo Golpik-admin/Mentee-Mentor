@@ -15,7 +15,7 @@ const ChangePassword = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
-    <div>
+    <div className=" p-6 ">
       <p className="text-colorSecondary text-2xl font-semibold">
         Password & Security
       </p>

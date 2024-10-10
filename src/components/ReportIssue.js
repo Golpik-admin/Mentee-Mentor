@@ -38,7 +38,7 @@ const ReportIssue = () => {
     setValue({ attachSreenshot: "" });
   };
   return (
-    <div>
+    <div className=" p-6 ">
       <p className="text-colorSecondary text-2xl font-semibold">
         Report an Issue
       </p>

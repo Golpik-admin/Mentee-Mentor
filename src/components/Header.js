@@ -45,30 +45,56 @@ const Header = () => {
         />
         {/* logo */}
         <div className="flex items-center">
-          <li className="list-none text-colorWhite pr-10 cursor-pointer">
+          <li
+            onClick={() => navigate("webhome")}
+            className="list-none text-colorWhite pr-10 cursor-pointer"
+          >
             Home
           </li>
-          <li className="list-none text-colorWhite pr-10 cursor-pointer">
+          <li
+            onClick={() => navigate("knowledge")}
+            className="list-none text-colorWhite pr-10 cursor-pointer"
+          >
             Knowledge
           </li>
-          <li className="list-none text-colorWhite pr-10 cursor-pointer">
+          <li
+            onClick={() => navigate("howitworks")}
+            className="list-none text-colorWhite pr-10 cursor-pointer"
+          >
             How it Works
           </li>
-          <li className="list-none text-colorWhite pr-10 cursor-pointer">
+          <li
+            onClick={() => navigate("pricing")}
+            className="list-none text-colorWhite pr-10 cursor-pointer"
+          >
             Pricing
           </li>
-          <li className="list-none text-colorWhite pr-10 cursor-pointer">
+          <li
+            onClick={() => navigate("faq")}
+            className="list-none text-colorWhite pr-10 cursor-pointer"
+          >
             FAQ
           </li>
-          <li className="list-none text-colorWhite pr-10 cursor-pointer">
+          <li
+            onClick={() => navigate("contactus")}
+            className="list-none text-colorWhite pr-10 cursor-pointer"
+          >
             Contact Us
           </li>
         </div>
 
         <div className="flex flex-row items-center space-x-4">
-          <li onClick={() => navigate('login')} className="list-none text-colorWhite cursor-pointer">Log in</li>
-          <li onClick={() => navigate('signup')} className="list-none p-2 text-colorPrimary text-center  cursor-pointer bg-colorWhite  rounded-full">
-            Sign Up 
+          <li
+            onClick={() => navigate("login")}
+            className="list-none text-colorWhite cursor-pointer"
+          >
+            Log in
+          </li>
+          <li
+            onClick={() => navigate("signup")}
+            className="list-none p-2 text-colorPrimary text-center  cursor-pointer bg-colorWhite  rounded-full"
+          >
+            Sign Up
           </li>
         </div>
       </div>

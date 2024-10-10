@@ -9,6 +9,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
+  SET_USER_ROLE,
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
@@ -24,7 +25,6 @@ import {
   CLEAR_ERRORS,
 } from "../constants/UserConstant";
 
-
 // Register
 export const registerAction = (authFields) => async (dispatch) => {
   try {
@@ -32,9 +32,21 @@ export const registerAction = (authFields) => async (dispatch) => {
 
     const { data } = await axios.post(`/api/auth/register`, authFields);
 
-    dispatch({ type: REGISTER_USER_SUCCESS, payload: data.message });
+    const token = data.data.access_token;
+    const user = data.data.user;
+    const role = user.role;
+
+    localStorage.setItem("authToken", token);
+
+    dispatch({ type: REGISTER_USER_SUCCESS, payload: user });
+    dispatch({ type: LOGIN_SUCCESS, payload: user });
+
+    dispatch({ type: SET_USER_ROLE, payload: role });
   } catch (error) {
-    dispatch({ type: REGISTER_USER_FAIL, payload: error.response });
+    dispatch({
+      type: REGISTER_USER_FAIL,
+      payload: error.response.data.message || "Registration failed",
+    });
   }
 };
 
@@ -47,7 +59,13 @@ export const loginAction = (authFields) => async (dispatch) => {
 
     localStorage.setItem("authToken", data.data.access_token);
 
-    dispatch({ type: LOGIN_SUCCESS, payload: data.data.user });
+    const user = data.data.user;
+    const role = user.role; // Assuming role comes from the user data
+
+    dispatch({ type: LOGIN_SUCCESS, payload: user });
+
+    // Set user role
+    dispatch({ type: SET_USER_ROLE, payload: role });
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error.response });
   }

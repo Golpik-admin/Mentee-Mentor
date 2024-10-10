@@ -6,7 +6,7 @@ const ChangeEmail = () => {
     currentEmail: "",
   });
   return (
-    <div>
+    <div className=" p-6 ">
       <p className="text-colorSecondary text-2xl font-semibold">
         Email Address
       </p>

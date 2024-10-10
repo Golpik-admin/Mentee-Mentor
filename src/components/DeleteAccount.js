@@ -15,7 +15,7 @@ const DeleteAccount = () => {
   });
 
   return (
-    <div>
+    <div className=" p-6 ">
       <p className="text-colorSecondary text-2xl font-semibold">
         Delete your account
       </p>

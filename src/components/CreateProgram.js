@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { CloseSvg } from "../assets/svgs/MentorSvg";
 
 const CreateProgram = ({ isOpen, closePopup }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
+  const { userType } = location.state || { userType: "mentee" };
   const [value, setValue] = useState({
     titleProgram: "",
     subject: "",
@@ -79,18 +81,20 @@ const CreateProgram = ({ isOpen, closePopup }) => {
                 rows="6"
                 maxLength="200"
                 className="h-auto min-h-[8rem] resize-none w-full mt-1 text-sm font-regular text-colorLightTertiary px-4 py-3 rounded-md  border border-[#8A8394] focus:border-[#8A8394] focus:outline-none transition-colors duration-200 ease-in-out"
-                />
+              />
             </div>
             <div className="border border-[#EDEDED]  w-full my-4" />
             <div className="flex flex-row  items-center justify-end gap-4">
               <button
                 className="rounded border border-colorPrimary  text-colorPrimary font-semibold text-sm w-[125px] h-[35px]"
-                onClick={closePopup} 
+                onClick={closePopup}
               >
                 Cancel
               </button>
               <button
-                onClick={() => navigate("/mentorprogram")}
+                onClick={() =>
+                  navigate("/mentorprogram", { state: { userType } })
+                }
                 className=" w-[125px] h-[35px] bg-colorPrimary text-colorWhite font-semibold text-sm rounded"
               >
                 Create Program

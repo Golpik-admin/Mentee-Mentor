@@ -27,12 +27,15 @@ import {
     LOAD_USER_SUCCESS,
     LOAD_USER_FAIL,
 
+    SET_USER_ROLE,  // Add the constant here
+
     CLEAR_ERRORS,
 } from '../constants/UserConstant';
 
 const initialState = {
-    user: null
-}
+    user: null,
+    role: null,  // Add role to the state
+};
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -41,14 +44,16 @@ const userReducer = (state = initialState, action) => {
             return {
                 loading: true,
                 error: null,
-                message: null
+                message: null,
+                userType: null,
             };
         case REGISTER_USER_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 error: null,
-                message: action.payload,
+                message: action.payload.message,
+                userType: action.payload.role,
             };
         case REGISTER_USER_FAIL:
             return {
@@ -150,6 +155,13 @@ const userReducer = (state = initialState, action) => {
                 error: action.payload
             };
 
+        // SET USER ROLE
+        case SET_USER_ROLE:
+            return {
+                ...state,
+                role: action.payload,  // Set the role here
+            };
+
         // CLEAR ERRORS
         case CLEAR_ERRORS:
             return {
@@ -159,6 +171,6 @@ const userReducer = (state = initialState, action) => {
 
         default: return state;
     }
-}
+};
 
 export default userReducer;

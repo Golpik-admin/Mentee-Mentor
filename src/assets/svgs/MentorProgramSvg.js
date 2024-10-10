@@ -341,8 +341,8 @@ export function BackSvg() {
 export function ArchiveSvg() {
   return (
     <svg
-      width="32"
-      height="32"
+      width="24"
+      height="24"
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -360,8 +360,8 @@ export function ArchiveSvg() {
 export function SessionSvg() {
   return (
     <svg
-      width="32"
-      height="32"
+      width="24"
+      height="24"
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -449,8 +449,8 @@ export function UploadSvg() {
 export function PlusSvg() {
   return (
     <svg
-      width="30"
-      height="30"
+      width="24"
+      height="24"
       viewBox="0 0 30 30"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -496,8 +496,8 @@ export function CloseSvg() {
 export function DownloadSvg() {
   return (
     <svg
-      width="30"
-      height="30"
+      width="24"
+      height="24"
       viewBox="0 0 43 42"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -515,8 +515,8 @@ export function DownloadSvg() {
 export function StartSvg() {
   return (
     <svg
-      width="32"
-      height="32"
+      width="24"
+      height="24"
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -536,8 +536,8 @@ export function StartSvg() {
 export function StartSessionSvg() {
   return (
     <svg
-      width="32"
-      height="32"
+      width="24"
+      height="24"
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -587,6 +587,64 @@ export function CreateDownSvg() {
         stroke-linecap="round"
         stroke-linejoin="round"
       />
+    </svg>
+  );
+}
+
+export function ChevDownSvg() {
+  return (
+    <svg
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M5.12695 8.5L12.1067 15.5L19.0865 8.5"
+        stroke="#6B7280"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function LeaveSvg() {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clip-path="url(#clip0_2330_3298)">
+        <path
+          d="M10.666 5.33301H23.9993C25.4721 5.33301 26.666 6.52691 26.666 7.99967V23.9997C26.666 25.4725 25.4721 26.6663 23.9993 26.6663H10.666"
+          stroke="#003F6F"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+        <path
+          d="M5.33398 16H18.6673"
+          stroke="#003F6F"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+        <path
+          d="M14.666 10.667L18.1137 14.1147C19.1551 15.1561 19.1551 16.8446 18.1137 17.8859L14.666 21.3337"
+          stroke="#003F6F"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_2330_3298">
+          <rect width="32" height="32" fill="white" />
+        </clipPath>
+      </defs>
     </svg>
   );
 }

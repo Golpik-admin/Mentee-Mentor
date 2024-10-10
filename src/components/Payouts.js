@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const Payouts = () => {
   const [showCard, setShowCard] = useState(false);
-  const [openModals, setOpenModals] = useState({});
+  const [openModals, setOpenModals] = useState(false);
   const navigate = useNavigate();
 
   const handleCard = () => {
@@ -27,11 +27,11 @@ const Payouts = () => {
   });
 
   return (
-    <div>
+    <div className=" p-6 ">
       <p className="text-colorSecondary text-2xl font-semibold">Payouts</p>
 
       <div className="mt-4 flex items-center gap-6">
-        <div className="h-[150px]  p-4  w-[30%] border shadow shadow-[#F7F7F7] rounded-md">
+        <div className="px-8 py-4 border shadow shadow-[#F7F7F7] rounded-md">
           <p className="text-colorSecondary text-lg font-semibold">
             This Month
           </p>
@@ -43,7 +43,7 @@ const Payouts = () => {
             Sep 9, 2024 - Sep 15, 2024
           </p>
         </div>
-        <div className=" h-[150px] p-4  w-[50%] border shadow shadow-[#F7F7F7] rounded-md">
+        <div className="px-8 py-4  border shadow shadow-[#F7F7F7] rounded-md">
           <div className="flex flex-row justify-between gap-4">
             <div>
               <p className="text-colorSecondary text-lg font-semibold">

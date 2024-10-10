@@ -18,6 +18,7 @@ const SignUp = () => {
 
   const { error, loading, message } = useSelector((state) => state.userReducer);
 
+  const [userType, setUserType] = useState("mentee");
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = (e) => {
@@ -28,6 +29,7 @@ const SignUp = () => {
     name: "",
     email: "",
     password: "",
+    role: userType,
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -36,14 +38,14 @@ const SignUp = () => {
       validationSchema: registerSchema,
       onSubmit: (values) => {
         dispatch(registerAction(values));
-        navigate("/createprofile");
+        navigate("/createprofile", { state: { userType } });
       },
     });
 
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="w-full">
+    <div className="w-full h-screen overflow-auto bg-colorWhite ">
       <div className="flex flex-row  h-full">
         {/* Image */}
 
@@ -64,19 +66,44 @@ const SignUp = () => {
             True legacy through uplifting people's intellect
           </p>
 
-          <div className="flex flex-row pt-10  flex justify-center items-center ">
-            <div className="w-[50%]  flex justify-center items-center">
-              <label className="text-colorPrimary text-center  font-medium text-lg cursor-pointer">
+          <div className="flex flex-row pt-10 justify-center items-center">
+            <div
+              className={`w-[50%] flex justify-center items-center cursor-pointer ${
+                userType === "mentee"
+                  ? "border-b-2 border-colorPrimary"
+                  : "border-b border-[#ccc]"
+              }`}
+              onClick={() => setUserType("mentee")}
+            >
+              <label
+                className={`cursor-pointer ${
+                  userType === "mentee"
+                    ? "text-colorSecondary font-bold text-xl"
+                    : "text-[#8A8394]"
+                } text-center font-medium text-lg`}
+              >
                 I'm a mentee
               </label>
             </div>
-            <div className="w-[50%]  flex justify-center items-center">
-              <label className="text-colorPrimary text-center font-medium text-lg cursor-pointer">
+            <div
+              className={`w-[50%] flex justify-center items-center cursor-pointer ${
+                userType === "mentor"
+                  ? "border-b-2 border-colorPrimary"
+                  : "border-b border-[#ccc]"
+              }`}
+              onClick={() => setUserType("mentor")}
+            >
+              <label
+                className={` cursor-pointer  ${
+                  userType === "mentor"
+                    ? "text-colorSecondary font-bold"
+                    : "text-[#8A8394]"
+                } text-center font-medium text-lg`}
+              >
                 I'm a mentor
               </label>
             </div>
           </div>
-          <div className="border-b border-colorPrimary" />
 
           <form className="m-auto mt-10" onSubmit={handleSubmit}>
             <div className="">

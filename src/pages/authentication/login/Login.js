@@ -12,11 +12,13 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { error, loading, isAuthenticated } = useSelector(
+  const { error, loading, isAuthenticated, user } = useSelector(
     (state) => state.userReducer
   );
 
   const [isChecked, setIsChecked] = useState(false);
+  const [userType, setUserType] = useState("mentee");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleCheckboxChange = (e) => {
     setIsChecked(e.target.checked);
@@ -32,21 +34,20 @@ const Login = () => {
       initialValues: initialFields,
       validationSchema: loginSchema,
       onSubmit: (values) => {
-        dispatch(loginAction(values));
-        navigate("/homepage");
+        dispatch(loginAction({ ...values, userType }));
+        navigate("/createprofile", { state: { userType } });
       },
     });
 
-  const [showPassword, setShowPassword] = useState(false);
-
-//   useEffect(() => {
-//     if (isAuthenticated) {
-//         navigate('/account');
-//     }
-// }, [dispatch, isAuthenticated, navigate]);
+  //   useEffect(() => {
+  //     if (isAuthenticated) {
+  //    setUserRole(user.role);
+  //         navigate('/account');
+  //     }
+  // }, [dispatch, isAuthenticated,user, navigate]);
 
   return (
-    <div className="w-full">
+    <div className="w-full h-screen overflow-auto bg-colorWhite ">
       <div className="flex flex-row  h-full">
         {/* Image */}
 
@@ -67,19 +68,46 @@ const Login = () => {
             Welcome! Please log in to access your account.
           </p>
 
-          <div className="flex flex-row pt-10  flex justify-center items-center ">
-            <div className="w-[50%]  flex justify-center items-center">
-              <label className="text-colorPrimary text-center  font-medium text-lg cursor-pointer">
+          <div className="flex flex-row pt-10 justify-center items-center">
+            <div
+              className={`w-[50%] flex justify-center items-center cursor-pointer ${
+                userType === "mentee"
+                  ? "border-b-2 border-colorPrimary"
+                  : "border-b border-[#ccc]"
+              }`}
+              onClick={() => setUserType("mentee")}
+            >
+              <label
+                className={`cursor-pointer ${
+                  userType === "mentee"
+                    ? "text-colorSecondary font-bold text-xl"
+                    : "text-[#8A8394]"
+                } text-center font-medium text-lg`}
+              >
                 I'm a mentee
               </label>
             </div>
-            <div className="w-[50%]  flex justify-center items-center">
-              <label className="text-colorPrimary text-center font-medium text-lg cursor-pointer">
+            <div
+              className={`w-[50%] flex justify-center items-center cursor-pointer ${
+                userType === "mentor"
+                  ? "border-b-2 border-colorPrimary"
+                  : "border-b border-[#ccc]"
+              }`}
+              onClick={() => setUserType("mentor")}
+            >
+              <label
+                className={` cursor-pointer  ${
+                  userType === "mentor"
+                    ? "text-colorSecondary font-bold"
+                    : "text-[#8A8394]"
+                } text-center font-medium text-lg`}
+              >
                 I'm a mentor
               </label>
             </div>
           </div>
-          <div className="border-b border-colorPrimary" />
+
+          {/* <div className="border-b border-colorPrimary" /> */}
 
           <form className="m-auto mt-10" onSubmit={handleSubmit}>
             <div className="">

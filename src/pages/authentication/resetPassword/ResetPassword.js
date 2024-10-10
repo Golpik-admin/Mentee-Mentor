@@ -65,7 +65,7 @@ const ResetPassword = () => {
   // }, [message, timer])
 
   return (
-    <div className="w-full">
+    <div className="w-full h-screen overflow-auto bg-colorWhite ">
       <div className="flex flex-row  h-full">
         {/* Image */}
 

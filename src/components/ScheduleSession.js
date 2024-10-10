@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { CloseSvg } from "../assets/svgs/MentorSvg";
 
 const ScheduleSession = ({ isOpen, closePopup }) => {
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const { userType } = location.state || { userType: "mentee" };
   const [value, setValue] = useState({
     titleProgram: "",
     subject: "",
@@ -114,7 +115,8 @@ const ScheduleSession = ({ isOpen, closePopup }) => {
                 Cancel
               </button>
               <button
-                onClick={() => navigate("/sessions")}
+                onClick={closePopup}
+                // onClick={() => navigate("/sessions")}
                 className=" w-[155px] h-[35px] bg-colorPrimary text-colorWhite font-semibold text-sm rounded"
               >
                 Schedule Session

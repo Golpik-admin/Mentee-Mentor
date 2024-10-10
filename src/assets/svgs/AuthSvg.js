@@ -124,3 +124,47 @@ export function LockLightSvg() {
     </svg>
   );
 }
+
+export function SubjectSvg() {
+  return (
+    <svg
+      width="20"
+      height="13"
+      viewBox="0 0 20 13"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1 2.57227H19C19.6 2.57227 20 2.17227 20 1.57227C20 0.972266 19.6 0.572266 19 0.572266H1C0.4 0.572266 0 0.972266 0 1.57227C0 2.17227 0.4 2.57227 1 2.57227ZM11 10.5723H1C0.4 10.5723 0 10.9723 0 11.5723C0 12.1723 0.4 12.5723 1 12.5723H11C11.6 12.5723 12 12.1723 12 11.5723C12 10.9723 11.6 10.5723 11 10.5723ZM19 5.57227H1C0.4 5.57227 0 5.97227 0 6.57227C0 7.17227 0.4 7.57227 1 7.57227H19C19.6 7.57227 20 7.17227 20 6.57227C20 5.97227 19.6 5.57227 19 5.57227Z"
+        fill="#6B7280"
+      />
+    </svg>
+  );
+}
+
+export function RightArrowSvg() {
+  return (
+    <svg
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M3.75 12.5H20.25"
+        stroke="white"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M13.5 5.75L20.25 12.5L13.5 19.25"
+        stroke="white"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+}
