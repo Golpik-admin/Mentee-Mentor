@@ -84,7 +84,7 @@ const Faq = () => {
   return (
     <div className="w-full overflow-auto bg-colorWhite ">
       <div className="items-center pt-8 flex justify-center flex-col">
-        <p className="text-3xl text-colorPrimary font-bold ">
+        <p className="text-3xl px-8 text-colorPrimary font-bold ">
           Frequently Asked Questions
         </p>
         <p className="text-md text-colorPrimary font-regular mt-2">

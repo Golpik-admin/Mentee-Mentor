@@ -24,8 +24,6 @@ const EditProfile = () => {
     twitter: "",
     youtube: "",
     linkednin: "",
-    typeHere: "",
-    linkednin: "",
     interest: "",
   });
   const navigate = useNavigate();
@@ -34,26 +32,27 @@ const EditProfile = () => {
   const handleGenderChange = (event) => {
     setGender(event.target.value);
   };
+
   return (
     <div className="w-full h-screen overflow-auto bg-colorWhite pb-8">
       <UserHeader />
-      <div className="p-10">
+      <div className="p-4 md:p-10">
         <div
           onClick={() => navigate(-1)}
-          className="rounded-md border border-colorPrimary cursor-pointer flex justify-center gap-2 w-[92px] h-[42px] flex flex-row items-center"
+          className="rounded-md border border-colorPrimary cursor-pointer flex justify-center gap-2 w-[92px] h-[42px] flex-row items-center"
         >
           <BackSvg />
           <p className="text-colorPrimary font-semibold text-sm">Back</p>
         </div>
       </div>
-      <div className="mx-10 my-4 border-b border  flex p-12 shadow shadow-[#ccc]">
-        <div className="w-[85%] ">
+      <div className="mx-4 md:mx-10 border-b border gap-4 flex p-4 md:p-8 shadow shadow-[#ccc] flex-col md:flex-row">
+        <div className="w-full md:w-[85%]">
           <p className="text-colorSecondary font-semibold text-lg">
             Edit Profile
           </p>
-          <div className="flex pt-6 items-center flex-wrap flex-row gap-4">
-            <div className="w-[49%] ">
-              <label className="text-colorSecondary font-medium text-sm after:content-['*'] after:ml-0.5 after:text-red-500">
+          <div className="flex flex-wrap pt-6 gap-4">
+            <div className="w-full md:w-[49%]">
+              <label className="text-colorSecondary font-medium text-sm">
                 First Name
               </label>
               <input
@@ -61,13 +60,11 @@ const EditProfile = () => {
                 name="firstName"
                 placeholder="First Name"
                 value={value.firstName}
-                // onChange={handleChange}
-                // onBlur={handleBlur}
                 className="w-full mt-2 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none  rounded-md border border-[#8A8394]"
               />
             </div>
-            <div className="w-[49%] ">
-              <label className="text-colorSecondary font-medium text-sm after:content-['*'] after:ml-0.5 after:text-red-500">
+            <div className="w-full md:w-[49%]">
+              <label className="text-colorSecondary font-medium text-sm">
                 Last Name
               </label>
               <input
@@ -75,13 +72,11 @@ const EditProfile = () => {
                 name="lastName"
                 placeholder="Last Name"
                 value={value.lastName}
-                // onChange={handleChange}
-                // onBlur={handleBlur}
                 className="w-full mt-2 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none  rounded-md border border-[#8A8394]"
               />
             </div>
-            <div className="w-[49%] ">
-              <label className="text-colorSecondary font-medium text-sm after:content-['*'] after:ml-0.5 after:text-red-500">
+            <div className="w-full md:w-[49%]">
+              <label className="text-colorSecondary font-medium text-sm">
                 Job Title
               </label>
               <input
@@ -89,13 +84,11 @@ const EditProfile = () => {
                 name="jobTitle"
                 placeholder="Job Title"
                 value={value.jobTitle}
-                // onChange={handleChange}
-                // onBlur={handleBlur}
                 className="w-full mt-2 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none  rounded-md border border-[#8A8394]"
               />
             </div>
-            <div className="w-[49%] ">
-              <label className="text-colorSecondary font-medium text-sm after:content-['*'] after:ml-0.5 after:text-red-500">
+            <div className="w-full md:w-[49%]">
+              <label className="text-colorSecondary font-medium text-sm">
                 Company Name
               </label>
               <input
@@ -103,13 +96,11 @@ const EditProfile = () => {
                 name="companyName"
                 placeholder="Company Name"
                 value={value.companyName}
-                // onChange={handleChange}
-                // onBlur={handleBlur}
                 className="w-full mt-2 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none  rounded-md border border-[#8A8394]"
               />
             </div>
-            <div className="w-[49%] ">
-              <label className="text-colorSecondary font-medium text-sm after:content-['*'] after:ml-0.5 after:text-red-500">
+            <div className="w-full md:w-[49%]">
+              <label className="text-colorSecondary font-medium text-sm">
                 Certification
               </label>
               <input
@@ -117,13 +108,11 @@ const EditProfile = () => {
                 name="certification"
                 placeholder="Certification"
                 value={value.certification}
-                // onChange={handleChange}
-                // onBlur={handleBlur}
                 className="w-full mt-2 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none  rounded-md border border-[#8A8394]"
               />
             </div>
-            <div className="w-[49%] ">
-              <label className="text-colorSecondary font-medium text-sm after:content-['*'] after:ml-0.5 after:text-red-500">
+            <div className="w-full md:w-[49%]">
+              <label className="text-colorSecondary font-medium text-sm">
                 Language
               </label>
               <input
@@ -131,27 +120,23 @@ const EditProfile = () => {
                 name="language"
                 placeholder="Language"
                 value={value.language}
-                // onChange={handleChange}
-                // onBlur={handleBlur}
                 className="w-full mt-2 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none  rounded-md border border-[#8A8394]"
               />
             </div>
-            <div className="w-[49%] ">
-              <label className="text-colorSecondary font-medium text-sm after:content-['*'] after:ml-0.5 after:text-red-500">
+            <div className="w-full md:w-[49%]">
+              <label className="text-colorSecondary font-medium text-sm">
                 Location
               </label>
               <input
                 type="text"
-                name="Language"
+                name="location"
                 placeholder="Location"
                 value={value.location}
-                // onChange={handleChange}
-                // onBlur={handleBlur}
                 className="w-full mt-2 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none  rounded-md border border-[#8A8394]"
               />
             </div>
-            <div className="w-[49%]">
-              <label className="text-colorSecondary font-medium text-sm after:content-['*'] after:ml-0.5 after:text-red-500">
+            <div className="w-full md:w-[49%]">
+              <label className="text-colorSecondary font-medium text-sm">
                 Gender
               </label>
               <select
@@ -169,125 +154,112 @@ const EditProfile = () => {
               </select>
             </div>
           </div>
-          <div className="mt-6">
-            <label className="text-colorSecondary font-medium text-sm after:content-['*'] after:ml-0.5 after:text-red-500">
+          <div className="py-3">
+            <label className="text-colorSecondary font-medium text-sm">
               About me
             </label>
             <textarea
-              // type="aboutMe"
               name="aboutMe"
-              placeholder="Tell us a litte bit about yourself"
+              placeholder="Tell us a little bit about yourself"
               value={value.aboutMe}
-              // onChange={handleChange}
-              // onBlur={handleBlur}
               rows="4"
               maxLength="140"
-              className="h-auto min-h-[8rem] resize-none w-full mt-1 text-sm font-regular text-colorLightTertiary px-4 py-3 rounded-md  border border-[#8A8394] focus:border-[#8A8394] focus:outline-none transition-colors duration-200 ease-in-out"
+              className="h-auto min-h-[8rem] resize-none w-full mt-1 text-sm font-regular text-colorLightTertiary px-4 py-3 rounded-md border border-[#8A8394] focus:border-[#8A8394] focus:outline-none transition-colors duration-200 ease-in-out"
             />
           </div>
 
-          <p className="mt-8 text-colorSecondary font-semibold text-lg">
+          <p className="mt-2 text-colorSecondary font-semibold text-lg">
             Social Profile
           </p>
 
-          <div className="flex items-center flex-wrap pt-4 flex-row gap-4">
-            <div className="w-[49%] ">
+          <div className="flex flex-wrap pt-4 gap-4">
+            <div className="w-full md:w-[49%]">
               <label className="text-colorSecondary font-medium text-sm">
                 Personal website
               </label>
-              <div className="border  border-[#8A8394] rounded-md px-4 py-3 my-2  w-full flex flex-row items-center">
+              <div className="border border-[#8A8394] rounded-md px-4 py-3 my-2 w-full flex items-center">
                 <GlobeSvg />
                 <input
                   type="text"
                   name="personalWebsite"
                   placeholder="Personal website"
                   value={value.personalWebsite}
-                  // onChange={handleChange}
-                  // onBlur={handleBlur}
-                  className="w-full text-sm font-regular text-colorLightTertiary px-4 focus:outline-none  "
+                  className="w-full text-sm font-regular text-colorLightTertiary px-4 focus:outline-none"
                 />
               </div>
             </div>
-            <div className="w-[49%] ">
+            <div className="w-full md:w-[49%]">
               <label className="text-colorSecondary font-medium text-sm">
                 Twitter
               </label>
-              <div className="border  border-[#8A8394] rounded-md px-4 py-3 my-2  w-full flex flex-row items-center">
+              <div className="border border-[#8A8394] rounded-md px-4 py-3 my-2 w-full flex items-center">
                 <TwitterSvg />
                 <input
                   type="text"
                   name="twitter"
                   placeholder="Twitter"
                   value={value.twitter}
-                  // onChange={handleChange}
-                  // onBlur={handleBlur}
-                  className="w-full text-sm font-regular text-colorLightTertiary px-4 focus:outline-none  "
+                  className="w-full text-sm font-regular text-colorLightTertiary px-4 focus:outline-none"
                 />
               </div>
             </div>
-            <div className="w-[49%] ">
+            <div className="w-full md:w-[49%]">
               <label className="text-colorSecondary font-medium text-sm">
                 Youtube
               </label>
-              <div className="border  border-[#8A8394] rounded-md px-4 py-3 my-2  w-full flex flex-row items-center">
+              <div className="border border-[#8A8394] rounded-md px-4 py-3 my-2 w-full flex items-center">
                 <YoutubeSvg />
                 <input
                   type="text"
                   name="youtube"
                   placeholder="Youtube"
                   value={value.youtube}
-                  // onChange={handleChange}
-                  // onBlur={handleBlur}
-                  className="w-full text-sm font-regular text-colorLightTertiary px-4 focus:outline-none  "
+                  className="w-full text-sm font-regular text-colorLightTertiary px-4 focus:outline-none"
                 />
               </div>
             </div>
-            <div className="w-[49%] ">
+            <div className="w-full md:w-[49%]">
               <label className="text-colorSecondary font-medium text-sm">
-                Linkednin
+                LinkedIn
               </label>
-              <div className="border  border-[#8A8394] rounded-md px-4 py-3 my-2  w-full flex flex-row items-center">
+              <div className="border border-[#8A8394] rounded-md px-4 py-3 my-2 w-full flex items-center">
                 <LinkedInSvg />
                 <input
                   type="text"
-                  name="linkednin"
-                  placeholder="Linkednin"
+                  name="linkedIn"
+                  placeholder="LinkedIn"
                   value={value.linkednin}
-                  // onChange={handleChange}
-                  // onBlur={handleBlur}
-                  className="w-full text-sm font-regular text-colorLightTertiary px-4 focus:outline-none  "
+                  className="w-full text-sm font-regular text-colorLightTertiary px-4 focus:outline-none"
                 />
               </div>
             </div>
+            <p className="mt-0 text-colorSecondary font-semibold text-lg">
+              Interest
+            </p>
+            <div className="w-full ">
+              <label className="text-colorSecondary font-medium text-sm">
+                Interests
+              </label>
+              <input
+                type="text"
+                name="interest"
+                placeholder="Interests (comma separated)"
+                value={value.interest}
+                className="w-full mt-2 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none rounded-md border border-[#8A8394]"
+                onChange={(e) =>
+                  setValue({ ...value, interest: e.target.value })
+                }
+              />
+            </div>
+            <button className="mt-4 bg-colorPrimary text-colorWhite text-sm font-semibold py-4 px-6 rounded">
+              Save Changes
+            </button>
           </div>
-
-          <p className="mt-8 text-colorSecondary font-semibold text-lg">
-            Interest
-          </p>
-          <div className="w-[100%] mt-6">
-            <label className="text-colorSecondary font-medium text-sm after:content-['*'] after:ml-0.5 after:text-red-500">
-              Add your Interests
-            </label>
-            <input
-              type="text"
-              name="interest"
-              placeholder="Type Here"
-              value={value.interest}
-              // onChange={handleChange}
-              // onBlur={handleBlur}
-              className="w-full mt-2 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none  rounded-md border border-[#8A8394]"
-            />
-          </div>
-          <button
-            // onClick={closePopup}
-            className="mt-6 bg-colorPrimary text-colorWhite text-sm font-semibold py-4 px-6 rounded"
-          >
-            Save Changes
-          </button>
         </div>
-        <div className="w-[15%] h-[280px] bg-[#F5F7FA] pt-10 flex justify-center">
+
+        <div className="hidden md:block md:w-[15%] w-full h-[280px] bg-[#F5F7FA] pt-10 flex justify-center">
           <img
-            className="w-[200px] h-[200px]"
+            className=" w-[200px] h-[200px]"
             src={require("../../assets/images/mentors.png")}
           />
         </div>

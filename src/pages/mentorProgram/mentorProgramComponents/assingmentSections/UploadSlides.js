@@ -1,34 +1,68 @@
 import React, { useState } from "react";
 import { CloseSvg } from "../../../../assets/svgs/MentorProgramSvg";
 
-const UploadSlides = ({ isOpen, closePopup }) => {
+const UploadSlides = ({ isOpen, closePopup, onUpload }) => {
   const [value, setValue] = useState({
     slideName: "",
   });
 
-  if (!isOpen) return null;
+  const [showDetails, setShowDetails] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadStatus, setUploadStatus] = useState("");
 
+  const handleInputChange = (e) => {
+    const { name, value: inputValue } = e.target;
+    setValue((prev) => ({ ...prev, [name]: inputValue }));
+  };
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const handleFileUpload = () => {
+    if (!value.slideName || !selectedFile) {
+      setUploadStatus("Please fill in all fields and select a file.");
+      return;
+    }
+    setUploadStatus("Uploading...");
+    setTimeout(() => {
+      setUploadStatus("File uploaded successfully!");
+      onUpload({
+        name: value.documentName,
+        file: selectedFile,
+      });
+      setShowDetails(true);
+      handleClose();
+    }, 2000);
+  };
+
+  const handleClose = () => {
+    closePopup();
+  };
+  
   return (
-    <div className="pt-4">
-      <div className="border shadow   w-full h-full ">
-        {/* upload Slides */}
-        <div className="flex flex-col  gap-6 pl-6 pt-4 ">
-          <div className="flex flex-row  gap-2 ">
-            <img
-              className="w-[35px] h-[35px]"
-              src={require("../../../../assets/images/pdfImg.png")}
-            />
-            <div>
-              <p className="text-colorSecondary text-sm font-semibold">
-                Assignment-2
-              </p>
-              <p className="text-colorLightTertiary text-xs font-medium">
-                12.5 mb
-              </p>
+    <div className="pt-2">
+      {showDetails && (
+        <div className="border shadow   w-full h-full ">
+          {/* upload Slides */}
+          <div className="flex flex-col  gap-6 px-6 py-4 ">
+            <div className="flex flex-row  gap-2 ">
+              <img
+                className="w-[35px] h-[35px]"
+                src={require("../../../../assets/images/pdfImg.png")}
+              />
+              <div>
+                <p className="text-colorSecondary text-sm font-semibold">
+                  {value.slideName}
+                </p>
+                <p className="text-colorLightTertiary text-xs font-medium">
+                  {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Popup Modal */}
       {isOpen && (
@@ -38,7 +72,7 @@ const UploadSlides = ({ isOpen, closePopup }) => {
               <h1 className="text-lg font-semibold text-colorSecondary">
                 Upload Slides
               </h1>
-              <div className="cursor-pointer" onClick={closePopup}>
+              <div className="cursor-pointer" onClick={handleClose}>
                 <CloseSvg />
               </div>
             </div>
@@ -53,8 +87,7 @@ const UploadSlides = ({ isOpen, closePopup }) => {
                   name="slideName"
                   placeholder="Slide Name"
                   value={value.slideName}
-                  // onChange={handleChange}
-                  // onBlur={handleBlur}
+                  onChange={handleInputChange}
                   className="w-full mt-1 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none shadow shadow-[#FCFCFC] rounded-md border border-colorLightTertiary"
                 />
               </div>
@@ -64,21 +97,16 @@ const UploadSlides = ({ isOpen, closePopup }) => {
                   className="w-[35px] h-[35px]"
                   src={require("../../../../assets/images/uploadImg.png")}
                 />
-                <p className="text-colorSecondary font-medium text-sm pt-2">
-                  Drag & drop or Browse
-                </p>
+                <input type="file" onChange={handleFileChange} />
               </div>
+              {uploadStatus && (
+                <p className="text-sm text-center mt-2">{uploadStatus}</p>
+              )}
             </div>
 
             <div className="flex justify-end mt-4 px-4 gap-4 items-center flex-row ">
               <button
-                onClick={closePopup}
-                className="text-colorPrimary text-sm font-semibold rounded py-2 px-6 border border-colorPrimary"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={closePopup}
+                onClick={handleFileUpload}
                 className="bg-colorPrimary text-colorWhite text-sm font-semibold py-2 px-6 rounded"
               >
                 Upload

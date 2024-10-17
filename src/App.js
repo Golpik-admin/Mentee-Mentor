@@ -22,6 +22,7 @@ import MentorProgram from "./pages/mentorProgram/MentorProgram";
 import AccountSettings from "./pages/accountSetting/AccountSetting";
 import EditProfile from "./pages/editProfile/EditProfile";
 import Profile from "./pages/profile/Profile";
+import Messages from "./pages/messages/Messages";
 
 function App() {
   // const dispatch = useDispatch();
@@ -54,6 +55,7 @@ function App() {
     location.pathname === "/search" ||
     location.pathname === "/payment" ||
     location.pathname === "/searchprogram" ||
+    location.pathname === "/messages" ||
     location.pathname === "/accountsetting";
 
   return (
@@ -80,6 +82,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/searchprogram" element={<SearchProgram />} />
+        <Route path="/messages" element={<Messages />} />
 
         <Route path="/" element={<Navigate to="/webhome" />} />
       </Routes>

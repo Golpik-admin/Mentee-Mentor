@@ -2,18 +2,28 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CloseSvg } from "../assets/svgs/MentorSvg";
 
-const ScheduleSession = ({ isOpen, closePopup }) => {
+const ScheduleSession = ({ isOpen, closePopup, onSchedule }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { userType } = location.state || { userType: "mentee" };
   const [value, setValue] = useState({
-    titleProgram: "",
-    subject: "",
-    description: "",
+    courseName: "",
+    date: "",
+    startTime: "",
+    endTime: "",
+    meetingLink: "",
   });
 
   if (!isOpen) return null;
 
+  const handleSchedule = () => {
+    onSchedule(value);
+    closePopup();
+  };
+
+  const handleChange = (e) => {
+    setValue({ ...value, [e.target.name]: e.target.value });
+  };
   return (
     <div className="">
       {isOpen && (
@@ -40,8 +50,7 @@ const ScheduleSession = ({ isOpen, closePopup }) => {
                 name="courseName"
                 placeholder="Write name of course here..."
                 value={value.courseName}
-                // onChange={handleChange}
-                // onBlur={handleBlur}
+                onChange={handleChange}
                 className="w-full mt-1 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none  rounded-md border border-colorPrimary"
               />
             </div>
@@ -53,10 +62,8 @@ const ScheduleSession = ({ isOpen, closePopup }) => {
                 <input
                   type="date"
                   name="date"
-                  placeholder="Date"
                   value={value.date}
-                  // onChange={handleChange}
-                  // onBlur={handleBlur}
+                  onChange={handleChange}
                   className="w-full mt-1 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none  rounded-md border border-colorPrimary"
                 />
               </div>
@@ -68,10 +75,8 @@ const ScheduleSession = ({ isOpen, closePopup }) => {
                 <input
                   type="time"
                   name="startTime"
-                  placeholder="Start time"
                   value={value.startTime}
-                  // onChange={handleChange}
-                  // onBlur={handleBlur}
+                  onChange={handleChange}
                   className="w-full mt-1 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none  rounded-md border border-colorPrimary"
                 />
               </div>
@@ -83,10 +88,8 @@ const ScheduleSession = ({ isOpen, closePopup }) => {
                 <input
                   type="time"
                   name="endTime"
-                  placeholder="End time"
                   value={value.endTime}
-                  // onChange={handleChange}
-                  // onBlur={handleBlur}
+                  onChange={handleChange}
                   className="w-full mt-1 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none  rounded-md border border-colorPrimary"
                 />
               </div>
@@ -97,12 +100,11 @@ const ScheduleSession = ({ isOpen, closePopup }) => {
                 Meeting Link
               </label>
               <input
-                type="link"
+                type="url"
                 name="meetingLink"
-                placeholder="https://etsu.zoom.us/test"
+                placeholder="https://example.com"
                 value={value.meetingLink}
-                // onChange={handleChange}
-                // onBlur={handleBlur}
+                onChange={handleChange}
                 className="w-full mt-1 text-sm font-regular text-colorLightTertiary px-4 py-3 focus:outline-none  rounded-md border border-colorPrimary"
               />
             </div>
@@ -115,7 +117,7 @@ const ScheduleSession = ({ isOpen, closePopup }) => {
                 Cancel
               </button>
               <button
-                onClick={closePopup}
+                onClick={handleSchedule}
                 // onClick={() => navigate("/sessions")}
                 className=" w-[155px] h-[35px] bg-colorPrimary text-colorWhite font-semibold text-sm rounded"
               >

@@ -1,23 +1,19 @@
 import React from "react";
 import Logo from "../logo.svg";
-import {
-  FacebookSvg,
-  InstagramSvg,
-  LinkedIn,
-} from "../assets/svgs/HomeSvgs";
+import { FacebookSvg, InstagramSvg, LinkedIn } from "../assets/svgs/HomeSvgs";
 
 const Footer = () => {
   return (
-    <div className="bg-[#151318] w-full h-[305px] px-10 py-3  ">
-
-      <div className="flex flex-row items-center flex justifty-center pt-10">
-        <div className="w-[50%] bg-red ">
+    <div className="bg-[#151318] w-full px-6 py-10">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+        {/* Left Section - Logo and Text */}
+        <div className="md:w-[50%] mb-6 md:mb-0">
           <img
             src={Logo}
             alt="Mentee Mentor"
-            className="w-[50px] sm:w-[178px] md:w-[178px] h-[30] cursor-pointer"
+            className="w-[170px]  h-auto cursor-pointer"
           />
-          <p className="text-colorWhite leading-loose text-xs pt-4 font-semibold">
+          <p className="text-colorWhite leading-loose text-sm  pt-4 font-semibold">
             Find the best way to learn
             <br />
             new things to improve your
@@ -26,16 +22,17 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="w-[50%]   ">
-          <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* Right Section - Links and Social Icons */}
+        <div className="md:w-[50%] w-full">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
             {/* Company Column */}
             <div>
-              <h2 className="text-white font-bold mb-4">Company</h2>
+              <h2 className="text-white text-base font-bold mb-4">Company</h2>
               <ul>
-                <li className="mb-2 hover:text-white-400 text-[#7B7584] font-medium text-sm cursor-pointer">
+                <li className="mb-2 hover:text-white text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
                   Knowledge
                 </li>
-                <li className="mb-2 hover:text-white-400 text-[#7B7584] font-medium text-sm cursor-pointer">
+                <li className="mb-2 hover:text-white text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
                   How it Works
                 </li>
               </ul>
@@ -43,9 +40,9 @@ const Footer = () => {
 
             {/* Contact Us Column */}
             <div>
-              <h2 className="text-white font-bold mb-4">Contact Us</h2>
+              <h2 className="text-white font-bold text-base mb-4">Contact Us</h2>
               <ul>
-                <li className="mb-2 hover:text-white-400 text-[#7B7584] font-medium text-sm cursor-pointer">
+                <li className="mb-2 hover:text-colorWhite text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
                   Contact us
                 </li>
               </ul>
@@ -53,12 +50,12 @@ const Footer = () => {
 
             {/* Support Column */}
             <div>
-              <h2 className="text-white font-bold mb-4">Support</h2>
+              <h2 className="text-colorWhite font-bold  text-base mb-4">Support</h2>
               <ul>
-                <li className="mb-2 hover:text-white-400 text-[#7B7584] font-medium text-sm cursor-pointer">
+                <li className="mb-2 hover:text-colorWhite text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
                   FAQ
                 </li>
-                <li className="mb-2 hover:text-white-400 text-[#7B7584] font-medium text-sm cursor-pointer">
+                <li className="mb-2 hover:text-colorWhite text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
                   Pricing
                 </li>
               </ul>
@@ -66,15 +63,15 @@ const Footer = () => {
 
             {/* Find Us Column */}
             <div>
-              <h2 className="text-white font-bold mb-4">Find Us</h2>
-              <ul className="flex flex-row item-center">
-                <li className="mb-2  hover:text-white-400 items-center justify-center flex rounded-full w-[55px] border border-colorSecondary h-[45px] cursor-pointer">
+              <h2 className="text-colorWhite text-base font-bold mb-4">Find Us</h2>
+              <ul className="flex space-x-3">
+                <li className="hover:text-colorWhite items-center justify-center flex rounded-full w-[45px] border border-colorSecondary h-[45px] cursor-pointer">
                   <FacebookSvg />
                 </li>
-                <li className="mb-2  ml-3 hover:text-white-400 items-center justify-center flex rounded-full w-[55px] border border-colorSecondary h-[45px] cursor-pointer">
+                <li className="hover:text-colorWhite items-center justify-center flex rounded-full w-[45px] border border-colorSecondary h-[45px] cursor-pointer">
                   <LinkedIn />
                 </li>
-                <li className="mb-2 ml-3 hover:text-white-400 items-center justify-center flex rounded-full w-[55px] border border-colorSecondary h-[45px] cursor-pointer">
+                <li className="hover:text-colorWhite items-center justify-center flex rounded-full w-[45px] border border-colorSecondary h-[45px] cursor-pointer">
                   <InstagramSvg />
                 </li>
               </ul>
@@ -82,14 +79,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      {/* <div className="flex flex-col justify-end mt-10">
-        <div className="border-b border-[#322F37]  w-full my-4" />
-        <p className="text-[#6D6775] text-sm text-center font-medium">
-          2024 MyMenteeMentor inc. All Rights Reserved
-        </p>
-      </div> */}
-      
     </div>
   );
 };

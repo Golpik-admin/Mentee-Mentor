@@ -13,9 +13,9 @@ import {
 } from "../../assets/svgs/MentorProgramSvg";
 import { useLocation, useNavigate } from "react-router-dom";
 import ProgramInfo from "./mentorProgramComponents/ProgramInfo";
-import Chat from "./mentorProgramComponents/Chat";
 import Assignments from "./mentorProgramComponents/Assignments";
 import Feedback from "./mentorProgramComponents/Feedback";
+import ProgramChat from "./mentorProgramComponents/ProgramChat";
 
 const MentorProgram = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -114,7 +114,7 @@ const MentorProgram = () => {
 
         <div className="tab-content mt-4">
           {activeTab === 1 && <ProgramInfo />}
-          {activeTab === 2 && <Chat />}
+          {activeTab === 2 && <ProgramChat />}
           {activeTab === 3 && <Assignments />}
           {activeTab === 4 && <Feedback />}
         </div>

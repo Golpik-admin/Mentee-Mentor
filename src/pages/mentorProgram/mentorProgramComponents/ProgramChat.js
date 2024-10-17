@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { PlaneRightSvg } from "../../../assets/svgs/MentorProgramSvg";
 
-const Chat = ({ userId }) => {
+const ProgramChat = ({ userId }) => {
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState([]);
 
@@ -53,4 +53,4 @@ const Chat = ({ userId }) => {
   );
 };
 
-export default Chat;
+export default ProgramChat;

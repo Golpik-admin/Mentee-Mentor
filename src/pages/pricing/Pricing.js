@@ -38,13 +38,13 @@ const Pricing = () => {
         <div className="bg-colorWhite  border border-colorPrimary mt-6  rounded-lg ">
           <div className="bg-colorPrimary p-4 items-center flex justify-center flex-col">
             <p className="text-xl text-colorWhite font-medium ">Contribution</p>
-            <p className="text-xs text-center text-colorWhite font-regular mt-2 leading-loose">
+            <p className="text-sm text-center text-colorWhite font-regular mt-2 leading-loose">
               Vestibulum ante ipsum primis in faucibus orci <br /> luctus et
               ultrices posuere.
             </p>
             <div className="flex flex-row  gap-2 mt-2">
               <p className="text-3xl text-colorWhite font-bold">$1</p>
-              <p className="text-xs flex justify-end  text-colorWhite font-regular">
+              <p className="text-sm flex justify-end  text-colorWhite font-regular">
                 /day
               </p>
             </div>
@@ -53,7 +53,7 @@ const Pricing = () => {
           <div className="p-4 ">
             {Data.map((item, i) => (
               <div className="flex pb-3 flex-row items-center gap-2">
-                <div className="w-[20px] h-[20px] text-xs flex items-center justify-center bg-colorPrimary text-colorWhite rounded-full">
+                <div className="w-[20px] h-[20px] text-sm flex items-center justify-center bg-colorPrimary text-colorWhite rounded-full">
                   ✓
                 </div>
                 <p className="text-sm text-colorSecondary font-regular">

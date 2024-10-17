@@ -43,22 +43,22 @@ const CreateProfile = () => {
   };
 
   return (
-    <div className="w-full flex flex-row justify-center bg-colorWhite  h-full">
+    <div className="w-full flex flex-col lg:flex-row justify-center bg-colorWhite h-full">
       {/* Image */}
       <div
-        className="w-[50%] h-screen bg-cover bg-center flex justify-center items-center"
+        className="hidden lg:flex w-[50%] h-screen bg-cover bg-center justify-center items-center"
         style={{
           backgroundImage: `url(${require("../../assets/images/createpPofile.png")})`,
         }}
       />
 
       {/* Form */}
-      <div className="w-[50%] h-screen items-center px-14 py-10">
-        <p className="text-colorPrimary text-center font-bold text-3xl">
+      <div className="w-full lg:w-[50%] h-full lg:h-screen items-center px-6 lg:px-14 py-10">
+        <p className="text-colorPrimary text-center font-bold text-2xl lg:text-3xl">
           Complete your Profile
         </p>
 
-        <p className="text-colorSecondary text-center pt-2 font-regular text-md">
+        <p className="text-colorSecondary text-center pt-2 font-regular text-sm lg:text-md">
           {stepContent[currentStep - 1]}
         </p>
 
@@ -70,16 +70,18 @@ const CreateProfile = () => {
                 currentStep >= 1
                   ? "border-colorPrimary bg-colorPrimary text-white"
                   : "border-colorLightTertiary bg-transparent text-colorLightTertiary"
-              } rounded-full w-10 h-10 items-center flex justify-center`}
+              } rounded-full w-8 h-8 lg:w-10 lg:h-10 items-center flex justify-center`}
             >
               {stepChecked[0] ? (
                 <CheckSvg /> // Iconify checkmark
               ) : (
-                <p className="text-center font-regular text-sm">01</p>
+                <p className="text-center font-regular text-xs lg:text-sm">
+                  01
+                </p>
               )}
             </div>
             <p
-              className={`absolute text-center font-regular text-sm top-12 ${
+              className={`absolute text-center font-regular text-xs lg:text-sm top-12 ${
                 currentStep >= 1
                   ? "text-colorPrimary"
                   : "text-colorLightTertiary"
@@ -95,7 +97,7 @@ const CreateProfile = () => {
               currentStep >= 2
                 ? "border-colorPrimary"
                 : "border-colorLightTertiary"
-            } w-[200px] h-0.5`}
+            } w-[100px] lg:w-[200px] h-0.5`}
           />
 
           {/* Step 2 */}
@@ -105,16 +107,18 @@ const CreateProfile = () => {
                 currentStep >= 2
                   ? "border-colorPrimary bg-colorPrimary text-white"
                   : "border-colorLightTertiary bg-transparent text-colorLightTertiary"
-              } rounded-full w-10 h-10 items-center flex justify-center`}
+              } rounded-full w-8 h-8 lg:w-10 lg:h-10 items-center flex justify-center`}
             >
               {stepChecked[1] ? (
                 <CheckSvg /> // Iconify checkmark
               ) : (
-                <p className="text-center font-regular text-sm">02</p>
+                <p className="text-center font-regular text-xs lg:text-sm">
+                  02
+                </p>
               )}
             </div>
             <p
-              className={`absolute text-center font-regular text-sm top-12 ${
+              className={`absolute text-center font-regular text-xs lg:text-sm top-12 ${
                 currentStep >= 2
                   ? "text-colorPrimary"
                   : "text-colorLightTertiary"
@@ -130,7 +134,7 @@ const CreateProfile = () => {
               currentStep >= 3
                 ? "border-colorPrimary"
                 : "border-colorLightTertiary"
-            } w-[200px] h-0.5`}
+            } w-[100px] lg:w-[200px] h-0.5`}
           />
 
           {/* Step 3 */}
@@ -140,16 +144,18 @@ const CreateProfile = () => {
                 currentStep === 3 && !loading // Show checkmark when saved
                   ? "border-colorPrimary bg-colorPrimary text-white"
                   : "border-colorLightTertiary bg-transparent text-colorLightTertiary"
-              } rounded-full w-10 h-10 items-center flex justify-center`}
+              } rounded-full w-8 h-8 lg:w-10 lg:h-10 items-center flex justify-center`}
             >
               {stepChecked[2] ? (
                 <CheckSvg /> // Iconify checkmark
               ) : (
-                <p className="text-center font-regular text-sm">03</p>
+                <p className="text-center font-regular text-xs lg:text-sm">
+                  03
+                </p>
               )}
             </div>
             <p
-              className={`absolute text-center font-regular text-sm top-12 ${
+              className={`absolute text-center font-regular text-xs lg:text-sm top-12 ${
                 currentStep >= 3
                   ? "text-colorPrimary"
                   : "text-colorLightTertiary"
@@ -171,7 +177,7 @@ const CreateProfile = () => {
           <button
             onClick={handleNextOrSave}
             type="button"
-            className="w-full mt-10 h-14 flex items-center justify-center bgGradient text-colorWhite hover:text-colorWhite text-base sm:text-lg font-semibold rounded-lg cursor-pointer px-4"
+            className="w-full mt-10 h-12 lg:h-14 flex items-center justify-center bgGradient text-colorWhite hover:text-colorWhite text-base lg:text-lg font-semibold rounded-lg cursor-pointer px-4"
           >
             {loading ? <Spinner /> : currentStep === 3 ? "Save" : "Next"}
           </button>

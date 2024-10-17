@@ -3,13 +3,13 @@ import React from "react";
 const HowItWorks = () => {
   return (
     <div className="w-full overflow-auto bg-colorWhite ">
-      <div className="px-28 w-[100%]">
-        <div className="flex pt-14">
-          <div className="w-[60%] flex-col pt-10">
+      <div className="md:px-28 px-8 ">
+        <div className="flex md:flex-row flex-col  pt-14">
+          <div className="md:w-[60%] flex-col md:pt-10">
             <p className="colorSecondary leading text-5xl font-bold leading-tight">
               Empower Through <br /> Mentorship Connections
             </p>
-            <p className="text-[#322F37] text-xs mt-4  leading-loose font-regular ">
+            <p className="text-[#322F37] text-sm mt-4  leading-loose font-regular ">
               myMentorMentee helps you build and strengthen your human network
               through <br /> tailored mentorship programs. These programs are
               designed to foster genuine <br /> connections and facilitate
@@ -18,34 +18,34 @@ const HowItWorks = () => {
               effectively.
             </p>
           </div>
-          <div className="w-[40%] items-center flex justify-center">
+          <div className="md:w-[40%] items-center flex justify-center">
             <img
               className="w-[100%] h-[100%]"
               src={require("../../assets/images/working.png")}
             />
           </div>
         </div>
-        <div className="flex pt-14">
-          <div className="w-[60%]  flex-col pt-10">
+        <div className="flex flex md:flex-row flex-col  pt-14">
+          <div className="md:w-[60%]  flex-col pt-10">
             <p className="colorSecondary leading text-5xl font-bold leading-tight">
               How it works?
             </p>
-            <p className="text-[#322F37] text-xs mt-4  leading-loose font-regular ">
+            <p className="text-[#322F37] text-sm mt-4  leading-loose font-regular ">
               We make mentorship easy. Sign up, get matched with the right{" "}
               <br /> mentor or mentee, and start working towards your goals
               through our <br /> seamless platform. It’s that simple!
             </p>
           </div>
-          <div className="w-[40%] items-center ">
+          <div className="md:w-[40%] items-center ">
             {Data.map((item, i) => (
               <div className="flex flex-col items-center">
-                <div className="flex  items gap-4 pb-8">
-                  <img className="w-[66px] h-[62px]" src={item.img} />
+                <div className="flex flex-col md:flex-row items gap-4 pb-8">
+                  <img className="md:w-[66px] h-[62px]" src={item.img} />
                   <div>
                     <p className="colorSecondary leading text-lg font-bold leading-tight">
                       {item.head}
                     </p>
-                    <p className="text-[#322F37] pt-2 text-xs  leading-loose font-regular ">
+                    <p className="text-[#322F37] pt-2 text-sm  leading-loose font-regular ">
                       {item.text}
                     </p>
                   </div>
@@ -54,12 +54,12 @@ const HowItWorks = () => {
             ))}
           </div>
         </div>
-        <div className="flex pt-14">
-          <div className="w-[60%] flex-col pt-10">
+        <div className="flex flex md:flex-row flex-col  pt-14">
+          <div className="md:w-[60%] flex-col pt-10">
             <p className="colorSecondary leading text-5xl font-bold leading-tight">
               Connecting Mentors <br /> and Mentees
             </p>
-            <p className="text-[#322F37] text-xs mt-4  leading-loose font-regular ">
+            <p className="text-[#322F37] text-sm mt-4  leading-loose font-regular ">
               myMentorMentee helps you strengthen your human network with
               scalable <br /> mentorship programs, and rapidly grow the skills,
               culture, and capabilities of your <br /> people.
@@ -73,7 +73,7 @@ const HowItWorks = () => {
               </button>
             </div>
           </div>
-          <div className="w-[40%] items-center flex justify-center">
+          <div className="md:w-[40%] items-center flex justify-center">
             <img
               className="w-[100%] h-[100%]"
               src={require("../../assets/images/connectingMentor.png")}

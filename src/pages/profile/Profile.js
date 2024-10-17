@@ -106,7 +106,7 @@ const Profile = () => {
         {userType === "mentee" ? (
           <div className="flex items-center gap-4">
             <button
-              // onClick={() => navigate("/editprofile")}
+              onClick={() => navigate("/messages")}
               type="submit"
               className=" text-colorPrimary border border-colorPrimary text-sm flex justify-center font-semibold  flex flex-row cursor-pointer gap-4 items-center  px-4 py-2 rounded-lg"
             >

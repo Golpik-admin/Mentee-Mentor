@@ -40,7 +40,7 @@ const ContactUs = () => {
     <div className="w-full overflow-auto bg-colorWhite ">
       <div className="items-center pt-8 flex justify-center flex-col">
         <p className="text-3xl text-colorPrimary font-bold ">ContactUs</p>
-        <p className="text-md text-colorPrimary font-regular mt-2">
+        <p className="text-md text-colorPrimary font-regular px-8 mt-2">
           Any question or remarks? Just write us a message!{" "}
         </p>
         <form className="w-[50%] m-auto mt-10" onSubmit={handleSubmit}>
@@ -62,7 +62,7 @@ const ContactUs = () => {
                 />
               </div>
               {errors.name && touched.name && (
-                <p className="text-red-500 text-xs">{errors.name}</p>
+                <p className="text-red-500 text-sm">{errors.name}</p>
               )}
             </div>
             <div>
@@ -82,7 +82,7 @@ const ContactUs = () => {
                 />
               </div>
               {errors.email && touched.email && (
-                <p className="text-red-500 text-xs">{errors.email}</p>
+                <p className="text-red-500 text-sm">{errors.email}</p>
               )}
             </div>
             <div>
@@ -102,7 +102,7 @@ const ContactUs = () => {
                 />
               </div>
               {errors.email && touched.email && (
-                <p className="text-red-500 text-xs">{errors.email}</p>
+                <p className="text-red-500 text-sm">{errors.email}</p>
               )}
             </div>
             <div className="my-2 ">

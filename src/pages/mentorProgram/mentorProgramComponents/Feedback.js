@@ -48,9 +48,8 @@ const Feedback = () => {
     setComments(updatedComments);
   };
 
-
   const openPopup = () => {
-      setModalType('edit')
+    setModalType("edit");
     setOpenModals(true);
   };
 
@@ -169,7 +168,6 @@ const Feedback = () => {
         Recommendation Given
       </p>
       <div className="border rounded-lg mt-4 shadow shadow-[#F7F7F7] w-full h-full p-6">
-
         {comments.map((comment) => (
           <div key={comment.id} className="pb-6">
             <div className="flex  justify-between  w-full flex-row gap-4">
@@ -199,11 +197,11 @@ const Feedback = () => {
                   </div>
                 </div>
               </div>
-              <div
-                onClick={() => handleToggleMenu(comment.id)}
-                className="text-[#6B7280] flex flex-col cursor-pointer"
-              >
-                <div className="flex justify-end">
+              <div className="text-[#6B7280] flex flex-col ">
+                <div
+                  onClick={() => handleToggleMenu(comment.id)}
+                  className="flex justify-end cursor-pointer"
+                >
                   <DotsSvg />
                 </div>
 
@@ -235,7 +233,11 @@ const Feedback = () => {
         ))}
       </div>
 
-      <GiveRecommendation modalType={modalType} closePopup={closePopup} isOpen={openModals} />
+      <GiveRecommendation
+        modalType={modalType}
+        closePopup={closePopup}
+        isOpen={openModals}
+      />
     </div>
   );
 };

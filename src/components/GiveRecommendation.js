@@ -58,7 +58,7 @@ const GiveRecommendation = ({ isOpen, closePopup, modalType }) => {
                       className="w-[20px] h-[20px]"
                     />
                     <label className="text-colorSecondary font-medium text-sm">
-                      Cris Ronald
+                      Cris Gail
                     </label>
                   </div>
                   <textarea

@@ -3,9 +3,11 @@ import UserHeader from "../../components/UserHeader";
 import { BackSvg } from "../../assets/svgs/MentorProgramSvg";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
+  ChatSupportSvg,
   EmailSvg,
   LockSvg,
   PayoutSvg,
+  ProfileSvg,
   ReportSvg,
 } from "../../assets/svgs/AccountSettingSvg";
 import ChangeEmail from "../../components/ChangeEmail";
@@ -15,17 +17,25 @@ import Payouts from "../../components/Payouts";
 import PairUpRequest from "../../components/PairUpRequest";
 import DeleteAccount from "../../components/DeleteAccount";
 import Subscription from "../../components/Subscription";
+import SwitchToMentee from "../../components/SwitchToMentee";
+import BecomeMentor from "../../components/BecomeMentor";
+import ChatSupport from "../../components/ChatSupport";
 
 const AccountSetting = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { userType } = location.state || { userType: "mentee" };
 
-  const hiddenComponentsForMentee = ["Subscription"];
+  const hiddenComponentsForMentee = ["Payouts", "Switch to Mentee"];
+  const hiddenComponentsForMentor = ["Become Mentor"];
 
   const filteredData = Data.filter(
     (item) =>
-      !(hiddenComponentsForMentee.includes(item.name) && userType === "mentee")
+      !(
+        (hiddenComponentsForMentee.includes(item.name) &&
+          userType === "mentee") ||
+        (hiddenComponentsForMentor.includes(item.name) && userType === "mentor")
+      )
   );
 
   const [activeTab, setActiveTab] = useState(filteredData[0]?.name);
@@ -45,8 +55,8 @@ const AccountSetting = () => {
         <p className="py-6 text-colorSecondary text-2xl font-bold">
           Account Settings
         </p>
-        <div className="flex flex-row gap-4 w-[100%] ">
-          <div className="w-[20%]  py-2 border shadow h-full shadow-[#F7F7F7] rounded-lg">
+        <div className="flex h-screen gap-4 ">
+          <div className="w-[20%]  py-0 border shadow shadow-[#F7F7F7] rounded-lg">
             {filteredData.map((item, i) => (
               <div>
                 <div
@@ -62,7 +72,7 @@ const AccountSetting = () => {
                 </div>
                 <div
                   className={` ${
-                    item.name === "Pair Up Requests"
+                    item.name === "Become Mentor"
                       ? ""
                       : "border-b w-full border-[#D7D7D7]"
                   } `}
@@ -71,7 +81,7 @@ const AccountSetting = () => {
             ))}
           </div>
 
-          <div className="w-[80%] border shadow h-full shadow-[#F7F7F7] rounded-lg">
+          <div className="w-[80%] border shadow shadow-[#F7F7F7] rounded-lg">
             {filteredData.map((item, i) => (
               <div
                 key={i}
@@ -124,5 +134,20 @@ const Data = [
     name: "Pair Up Requests",
     svg: <EmailSvg />,
     component: <PairUpRequest />,
+  },
+  {
+    name: "Switch to Mentee",
+    svg: <ProfileSvg />,
+    component: <SwitchToMentee />,
+  },
+  {
+    name: "Become Mentor",
+    svg: <ProfileSvg />,
+    component: <BecomeMentor />,
+  },
+  {
+    name: "Chat Support",
+    svg: <ChatSupportSvg />,
+    component: <ChatSupport />,
   },
 ];
