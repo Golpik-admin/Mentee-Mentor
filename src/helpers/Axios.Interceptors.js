@@ -2,7 +2,8 @@ import axios from "axios";
 
 // Create an instance of Axios with default configuration
 export const axiosInstance = axios.create({
-  baseURL: "https://9fe5-111-88-26-244.ngrok-free.app/",
+  baseURL:
+    "https://63fc-2400-adc1-1df-f800-50bc-b504-ab41-a3ed.ngrok-free.app/",
 });
 // Request Interceptor
 axiosInstance.interceptors.request.use(
