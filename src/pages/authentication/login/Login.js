@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,9 +24,17 @@ const Login = () => {
     setIsChecked(e.target.checked);
   };
 
+  const getDeviceInfo = () => {
+    const device_token = "";
+    const device_type = "web";
+    return { device_token, device_type };
+  };
+
   const initialFields = {
     email: "",
     password: "",
+    device_token: getDeviceInfo().device_token,
+    device_type: getDeviceInfo().device_type,
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -34,10 +42,17 @@ const Login = () => {
       initialValues: initialFields,
       validationSchema: loginSchema,
       onSubmit: (values) => {
-        dispatch(loginAction({ ...values, userType }));
-        navigate("/createprofile", { state: { userType } });
+        dispatch(loginAction(values)).then(() => {
+          navigate("/mentorprogram");
+        });
       },
     });
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/mentorprogram", { state: { userType } });
+    }
+  }, [dispatch, isAuthenticated, navigate]);
 
   return (
     <div className="w-full h-screen items-center justify-center overflow-auto bg-colorWhite flex flex-col lg:flex-row">
@@ -163,7 +178,7 @@ const Login = () => {
                     checked={isChecked}
                     onChange={handleCheckboxChange}
                     className="appearance-none h-4 w-4 checked:bg-colorPrimary checked:before:content-['✓'] checked:before:text-xs checked:before:flex checked:before:justify-center checked:before:text-white  rounded border border-colorPrimary  focus:ring-colorSecondary"
-                    />
+                  />
                   <label
                     htmlFor="terms"
                     className="ml-2 text-sm text-colorSecondary font-medium"
@@ -185,12 +200,19 @@ const Login = () => {
                   type="submit"
                   className="w-full h-14 flex items-center justify-center bgGradient text-colorWhite hover:text-colorWhite text-base sm:text-lg font-semibold rounded-lg cursor-pointer px-4"
                 >
-                  {loading ? (
-                    <Spinner rootClass="w-5 h-5 text-colorTertiary fill-colorPrimary" />
-                  ) : (
-                    "Signin"
-                  )}
+                  {loading ? <Spinner /> : "Signin"}
                 </button>
+                {error?.data?.code === 402 && error?.data?.message ? (
+                  <div className="flex items-center justify-center space-x-2">
+                    <p className="text-red-500 text-xs font-bold text-center">
+                      {error?.data?.message}
+                    </p>
+                  </div>
+                ) : error?.data?.message ? (
+                  <p className="text-red-500 text-xs font-bold text-center">
+                    {error?.data?.message}cdsds
+                  </p>
+                ) : null}
               </div>
               <div className="text-sm flex items-center justify-center space-x-2 mt-4">
                 <p className="text-colorTertiary font-light">

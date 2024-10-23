@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import _ from "lodash";
 import { useLocation, useNavigate } from "react-router-dom";
 import Logo from "../logo.svg";
@@ -11,9 +11,12 @@ import {
   SearchSvg,
   SettingSvg,
 } from "../assets/svgs/MentorSvg";
+import Notifications from "./Notifications";
+import CommonModal from "./CommonModal";
 
 const UserHeader = () => {
   const [openModals, setOpenModals] = useState({});
+  const [openLogoutModal, setLogoutModal] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,6 +28,22 @@ const UserHeader = () => {
 
   const closePopup = (modal) => {
     setOpenModals((prev) => ({ ...prev, [modal]: false }));
+  };
+
+  const visiblePopup = () => {
+    setLogoutModal(true);
+  };
+
+  const unvisiblePopup = () => {
+    setLogoutModal(false);
+  };
+
+  const notificationRef = useRef(null);
+
+  const handleOpenNotifications = () => {
+    if (notificationRef.current) {
+      notificationRef.current.openModal();
+    }
   };
 
   return (
@@ -55,7 +74,7 @@ const UserHeader = () => {
             <SearchSvg />
           </a>
           <a
-            onClick={() => navigate("/signup")}
+            onClick={handleOpenNotifications}
             className="list-none text-colorWhite cursor-pointer"
           >
             <NotificationSvg />
@@ -73,6 +92,7 @@ const UserHeader = () => {
             <SettingSvg />
           </a>
         </div>
+        <Notifications ref={notificationRef} />
       </div>
 
       {openModals.settings && (
@@ -113,7 +133,10 @@ const UserHeader = () => {
                 <ProfileSvg />
                 Account Setting
               </button>
-              <button className="flex gap-2 items-center flex-row text-colorSecondary text-sm font-semibold py-2 rounded">
+              <button
+                onClick={visiblePopup}
+                className="flex gap-2 items-center flex-row text-colorSecondary text-sm font-semibold py-2 rounded"
+              >
                 <LogoutSvg />
                 Logout
               </button>
@@ -121,6 +144,14 @@ const UserHeader = () => {
           </div>
         </div>
       )}
+
+      <CommonModal
+        text={"Are you sure you want to logout?"}
+        heading={"Logout"}
+        btnText={"Logout"}
+        isOpen={openLogoutModal}
+        closeModal={unvisiblePopup}
+      />
     </div>
   );
 };

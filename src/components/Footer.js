@@ -1,8 +1,10 @@
 import React from "react";
 import Logo from "../logo.svg";
 import { FacebookSvg, InstagramSvg, LinkedIn } from "../assets/svgs/HomeSvgs";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-[#151318] w-full px-6 py-10">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
@@ -29,10 +31,10 @@ const Footer = () => {
             <div>
               <h2 className="text-white text-base font-bold mb-4">Company</h2>
               <ul>
-                <li className="mb-2 hover:text-white text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
+                <li onClick={() => navigate("/knowledge")} className="mb-2 hover:text-white text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
                   Knowledge
                 </li>
-                <li className="mb-2 hover:text-white text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
+                <li onClick={() => navigate('/howitworks')} className="mb-2 hover:text-white text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
                   How it Works
                 </li>
               </ul>
@@ -42,7 +44,7 @@ const Footer = () => {
             <div>
               <h2 className="text-white font-bold text-base mb-4">Contact Us</h2>
               <ul>
-                <li className="mb-2 hover:text-colorWhite text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
+                <li onClick={() => navigate('/contactus')} className="mb-2 hover:text-colorWhite text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
                   Contact us
                 </li>
               </ul>
@@ -52,10 +54,10 @@ const Footer = () => {
             <div>
               <h2 className="text-colorWhite font-bold  text-base mb-4">Support</h2>
               <ul>
-                <li className="mb-2 hover:text-colorWhite text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
+                <li onClick={() => navigate("/faq")} className="mb-2 hover:text-colorWhite text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
                   FAQ
                 </li>
-                <li className="mb-2 hover:text-colorWhite text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
+                <li onClick={() => navigate('/pricing')} className="mb-2 hover:text-colorWhite text-[#7B7584] font-medium text-base sm:text-sm cursor-pointer">
                   Pricing
                 </li>
               </ul>

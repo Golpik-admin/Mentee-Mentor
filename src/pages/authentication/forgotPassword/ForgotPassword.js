@@ -9,6 +9,7 @@ import Spinner from "../../../elements/Spinner";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const { error, loading, message } = useSelector((state) => state.userReducer);
 
@@ -27,8 +28,8 @@ const ForgotPassword = () => {
     });
 
   return (
-<div className="h-screen w-full flex flex-col md:flex-row items-center justify-center bg-colorWhite">
-{/* Image */}
+    <div className="h-screen w-full flex flex-col md:flex-row items-center justify-center bg-colorWhite">
+      {/* Image */}
       <div
         className="md:w-1/2 md:h-screen bg-cover bg-center flex justify-center items-center"
         style={{
@@ -75,11 +76,7 @@ const ForgotPassword = () => {
                   type="submit"
                   className="w-full h-14 flex items-center justify-center bgGradient text-colorWhite hover:text-colorWhite text-base sm:text-lg font-semibold rounded-lg cursor-pointer"
                 >
-                  {loading ? (
-                    <Spinner rootClass="w-5 h-5 text-colorTertiary fill-colorPrimary" />
-                  ) : (
-                    "Send reset link"
-                  )}
+                  {loading ? <Spinner /> : "Send reset link"}
                 </button>
               </div>
               <div className="text-sm flex items-center justify-center space-x-2 mt-6">

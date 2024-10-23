@@ -40,6 +40,7 @@ const Profile = () => {
   const handleShowComment = () => {
     setShowComment((prev) => !prev);
   };
+  // const {general, auth} = useSelector(state => ({...state}));
 
   const navigate = useNavigate();
   return (

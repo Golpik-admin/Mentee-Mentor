@@ -29,7 +29,7 @@ const SignUp = () => {
     name: "",
     email: "",
     password: "",
-    role: userType,
+    role_no: userType === "mentee" ? 2 : 3,
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -37,10 +37,12 @@ const SignUp = () => {
       initialValues: initialFields,
       validationSchema: registerSchema,
       onSubmit: (values) => {
-        dispatch(registerAction(values));
-        navigate("/createprofile", { state: { userType } });
+        dispatch(registerAction(values)).then(() => {
+          navigate("/login");
+        });
       },
     });
+  // console.log("Form data being submitted: ", initialValues);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -185,12 +187,24 @@ const SignUp = () => {
                   type="submit"
                   className="w-full mt-6 h-14 flex items-center justify-center bgGradient text-colorWhite hover:text-colorWhite text-base sm:text-lg font-semibold rounded-lg cursor-pointer px-4"
                 >
-                  {loading ? (
-                    <Spinner rootClass="w-5 h-5 text-colorTertiary fill-colorPrimary" />
-                  ) : (
-                    "Signup"
-                  )}
+                  {loading ? <Spinner /> : "Signup"}
                 </button>
+
+                {message && (
+                  <p className="text-green-500 text-xs font-bold text-center">
+                    {message}
+                  </p>
+                )}
+
+                {error?.data?.code === 4001 && error?.data?.errors?.email ? (
+                  <p className="text-red-500 text-xs font-bold text-center">
+                    {error?.data?.errors?.email}
+                  </p>
+                ) : error?.data?.message ? (
+                  <p className="text-red-500 text-xs font-bold text-center">
+                    {error?.data?.message}
+                  </p>
+                ) : null}
               </div>
               <div className="text-sm flex items-center justify-center space-x-2 mt-4">
                 <p className="text-colorTertiary font-light">

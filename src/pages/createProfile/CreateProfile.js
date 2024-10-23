@@ -42,6 +42,8 @@ const CreateProfile = () => {
     }
   };
 
+  
+
   return (
     <div className="w-full flex flex-col lg:flex-row justify-center bg-colorWhite h-full">
       {/* Image */}

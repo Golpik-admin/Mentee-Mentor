@@ -1,24 +1,19 @@
-import axios from 'axios';
+import axios from "axios";
 
 // Create an instance of Axios with default configuration
-export const axiosInstance = axios.create();
-
+export const axiosInstance = axios.create({
+  baseURL: "https://9fe5-111-88-26-244.ngrok-free.app/",
+});
 // Request Interceptor
 axiosInstance.interceptors.request.use(
   (config) => {
-    // Set the 'Content-Type' header to 'application/json'
-    config.headers['Content-Type'] = 'application/json';
+    config.headers["Content-Type"] = "application/json";
+    config.headers["Accept"] = "application/json";
 
-    // Set the 'Accept' header to 'application/json'
-    config.headers['Accept'] = 'application/json';
-
-    // You can add your token handling logic here
-    // For example, you can store the token in localStorage or a state variable and retrieve it as needed
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem("authToken");
     if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;
+      config.headers["Authorization"] = `Bearer ${token}`;
     }
-
     return config;
   },
   (error) => {
