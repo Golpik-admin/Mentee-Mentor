@@ -190,13 +190,13 @@ const SignUp = () => {
                   {loading ? <Spinner /> : "Signup"}
                 </button>
 
-                {message && (
+                {/* {message && (
                   <p className="text-green-500 text-xs font-bold text-center">
                     {message}
                   </p>
-                )}
+                )} */}
 
-                {error?.data?.code === 4001 && error?.data?.errors?.email ? (
+                {/* {error?.data?.code === 4001 && error?.data?.errors?.email ? (
                   <p className="text-red-500 text-xs font-bold text-center">
                     {error?.data?.errors?.email}
                   </p>
@@ -204,7 +204,7 @@ const SignUp = () => {
                   <p className="text-red-500 text-xs font-bold text-center">
                     {error?.data?.message}
                   </p>
-                ) : null}
+                ) : null} */}
               </div>
               <div className="text-sm flex items-center justify-center space-x-2 mt-4">
                 <p className="text-colorTertiary font-light">

@@ -202,7 +202,7 @@ const Login = () => {
                 >
                   {loading ? <Spinner /> : "Signin"}
                 </button>
-                {error?.data?.code === 402 && error?.data?.message ? (
+                {/* {error?.data?.code === 402 && error?.data?.message ? (
                   <div className="flex items-center justify-center space-x-2">
                     <p className="text-red-500 text-xs font-bold text-center">
                       {error?.data?.message}
@@ -210,9 +210,9 @@ const Login = () => {
                   </div>
                 ) : error?.data?.message ? (
                   <p className="text-red-500 text-xs font-bold text-center">
-                    {error?.data?.message}cdsds
+                    {error?.data?.message}
                   </p>
-                ) : null}
+                ) : null} */}
               </div>
               <div className="text-sm flex items-center justify-center space-x-2 mt-4">
                 <p className="text-colorTertiary font-light">
