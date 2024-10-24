@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { registerAction } from "../../../actions/UserActions";
+import { registerAction, clearErrors } from "../../../actions/UserActions";
 import { registerSchema } from "../../../schemas";
 import {
   EmailSvg,
@@ -29,7 +29,7 @@ const SignUp = () => {
     name: "",
     email: "",
     password: "",
-    role_no: userType === "mentee" ? 2 : 3,
+    role_no: "",
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -37,12 +37,23 @@ const SignUp = () => {
       initialValues: initialFields,
       validationSchema: registerSchema,
       onSubmit: (values) => {
-        dispatch(registerAction(values)).then(() => {
-          navigate("/login");
-        });
+        const formData = {
+          ...values,
+          role_no: userType === "mentee" ? 2 : 3,
+        };
+        dispatch(registerAction(formData));
       },
     });
-  // console.log("Form data being submitted: ", initialValues);
+
+  useEffect(() => {
+    dispatch(clearErrors());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (message) {
+      navigate("/createprofile");
+    }
+  }, [message, navigate]);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -189,22 +200,6 @@ const SignUp = () => {
                 >
                   {loading ? <Spinner /> : "Signup"}
                 </button>
-
-                {/* {message && (
-                  <p className="text-green-500 text-xs font-bold text-center">
-                    {message}
-                  </p>
-                )} */}
-
-                {/* {error?.data?.code === 4001 && error?.data?.errors?.email ? (
-                  <p className="text-red-500 text-xs font-bold text-center">
-                    {error?.data?.errors?.email}
-                  </p>
-                ) : error?.data?.message ? (
-                  <p className="text-red-500 text-xs font-bold text-center">
-                    {error?.data?.message}
-                  </p>
-                ) : null} */}
               </div>
               <div className="text-sm flex items-center justify-center space-x-2 mt-4">
                 <p className="text-colorTertiary font-light">
@@ -217,6 +212,17 @@ const SignUp = () => {
                   Signin
                 </div>
               </div>
+            </div>
+            <div className=" pt-10   items-center">
+              {error?.data?.code === 4001 && error?.data?.errors?.email ? (
+                <p className="text-red-500 text-lg font-bold text-center">
+                  {error?.data?.errors?.email}
+                </p>
+              ) : error?.message ? (
+                <p className="text-red-500 text-lg font-bold text-center">
+                  {error.message}
+                </p>
+              ) : null}
             </div>
           </div>
         </form>

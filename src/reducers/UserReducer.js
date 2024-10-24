@@ -43,9 +43,11 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: null,
+        // userType: action.payload.role,
+        user: action.payload.user,
+        role: action.payload.role,
         message: action.payload.message,
-        userType: action.payload.role,
+        error: null,
       };
     case REGISTER_USER_FAIL:
       return {

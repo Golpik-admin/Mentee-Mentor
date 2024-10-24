@@ -78,7 +78,20 @@ const ForgotPassword = () => {
                 >
                   {loading ? <Spinner /> : "Send reset link"}
                 </button>
+                {message && (
+                  <p className="text-green-500 text-xs font-bold text-center">
+                    {message}
+                  </p>
+                )}
+
+                {/* error */}
+                {error?.data?.message && (
+                  <p className="text-red-500 text-xs font-bold text-center">
+                    {error?.data?.message}
+                  </p>
+                )}
               </div>
+
               <div className="text-sm flex items-center justify-center space-x-2 mt-6">
                 <div
                   onClick={() => navigate("/login")}

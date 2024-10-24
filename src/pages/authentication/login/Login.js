@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { loginAction } from "../../../actions/UserActions";
+import { loginAction, clearErrors } from "../../../actions/UserActions";
 import { loginSchema } from "../../../schemas";
 import { EmailSvg, LockLightSvg } from "../../../assets/svgs/AuthSvg";
 import { Icon } from "@iconify/react";
@@ -12,7 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { error, loading, isAuthenticated, user } = useSelector(
+  const { error, loading, isAuthenticated } = useSelector(
     (state) => state.userReducer
   );
 
@@ -42,9 +42,7 @@ const Login = () => {
       initialValues: initialFields,
       validationSchema: loginSchema,
       onSubmit: (values) => {
-        dispatch(loginAction(values)).then(() => {
-          navigate("/mentorprogram");
-        });
+        dispatch(loginAction(values));
       },
     });
 
@@ -52,7 +50,8 @@ const Login = () => {
     if (isAuthenticated) {
       navigate("/mentorprogram", { state: { userType } });
     }
-  }, [dispatch, isAuthenticated, navigate]);
+    dispatch(clearErrors());
+  }, [dispatch, isAuthenticated, navigate, userType]);
 
   return (
     <div className="w-full h-screen items-center justify-center overflow-auto bg-colorWhite flex flex-col lg:flex-row">
@@ -60,7 +59,7 @@ const Login = () => {
       <div
         className="lg:w-1/2 lg:h-screen bg-cover bg-center flex justify-center items-center"
         style={{
-          backgroundImage: `url(${require("../../../assets/images/loginbanner.png")})`,
+          backgroundImage: `url(${require("../../../assets/images/menteebg.png")})`,
         }}
       />
 
@@ -202,17 +201,6 @@ const Login = () => {
                 >
                   {loading ? <Spinner /> : "Signin"}
                 </button>
-                {/* {error?.data?.code === 402 && error?.data?.message ? (
-                  <div className="flex items-center justify-center space-x-2">
-                    <p className="text-red-500 text-xs font-bold text-center">
-                      {error?.data?.message}
-                    </p>
-                  </div>
-                ) : error?.data?.message ? (
-                  <p className="text-red-500 text-xs font-bold text-center">
-                    {error?.data?.message}
-                  </p>
-                ) : null} */}
               </div>
               <div className="text-sm flex items-center justify-center space-x-2 mt-4">
                 <p className="text-colorTertiary font-light">
@@ -226,6 +214,23 @@ const Login = () => {
                 </div>
               </div>
             </div>
+            {/* Error Message Display */}
+            {/* <div className=" pt-10 items-center">
+                {error?.data?.code === 4001 && error?.data?.errors?.email ? (
+                  <p className="text-red-500 text-lg font-bold text-center">
+                    {error?.data?.errors?.email}
+                  </p>
+                ) : error?.message ? (
+                  <p className="text-red-500 text-lg font-bold text-center">
+                    {error.message}
+                  </p>
+                ) : null}
+              </div> */}
+            {error && (
+              <div className="text-red-500 text-lg font-bold text-center">
+                {error.message}
+              </div>
+            )}
           </div>
         </form>
       </div>

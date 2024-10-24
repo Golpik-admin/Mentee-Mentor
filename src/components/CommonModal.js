@@ -26,20 +26,20 @@ const CommonModal = ({ isOpen, closeModal, heading, text, btnText }) => {
   }, [isOpen, closeModal]);
 
   //   loadUserAction
-//   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  //   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-//   useEffect(() => {
-//       if (!isAuthenticated) {
-//           navigate("/login");
-//         }
-//     }, [isAuthenticated, navigate]);
-    
-    const logoutUser = () => {
-        dispatch(logoutAction());
-        navigate("/login");
-    };
+  //   useEffect(() => {
+  //       if (!isAuthenticated) {
+  //           navigate("/login");
+  //         }
+  //     }, [isAuthenticated, navigate]);
 
-    if (!isOpen) return null;
+  const logoutUser = () => {
+    dispatch(logoutAction());
+    navigate("/login");
+  };
+
+  if (!isOpen) return null;
 
   return (
     <div>
